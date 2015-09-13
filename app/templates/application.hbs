@@ -1,3 +1,26 @@
-<h2 id="title">Welcome to Ember</h2>
+<nav class="top-bar" data-topbar role="navigation">
+	<ul class="title-area">
+		<li class="name">
+			{{link-to 'Obsidian Web' 'index' tag='h1'}}
+		</li>
+	</ul>
 
+	<section class="topbar-section">
+		<ul class="right">{{#if session.isAuthenticated}}
+			<li class="has-dropdown">
+				<a href="#">Tabellen</a>
+				<ul class="dropdown">
+					{{link-to 'Schüler', 'students.index' tag='li'}}
+					{{link-to 'Lehrer', 'teachers.index' tag='li'}}
+					{{link-to 'Bücher', 'books.index' tag='li'}}
+				</ul>
+			</li>
+			{{link-to 'Einstellungen', 'settings' tag='li'}}
+			<li><a {{action 'invalidateSession'}}</a></li>
+			{{else}}
+			{{link-to 'Login', 'login' tag='li'}}
+			{{/if}}
+		</ul>
+	</section>
+</nav>
 {{outlet}}
