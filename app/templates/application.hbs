@@ -1,26 +1,30 @@
+{{#app-canvas}}
 <nav class="top-bar" data-topbar role="navigation">
 	<ul class="title-area">
 		<li class="name">
-			{{link-to 'Obsidian Web' 'index' tag='h1'}}
+			<h1>{{link-to 'Obsidian Web' 'index'}}</h1>
 		</li>
 	</ul>
-
+{{!--
 	<section class="topbar-section">
 		<ul class="right">{{#if session.isAuthenticated}}
 			<li class="has-dropdown">
 				<a href="#">Tabellen</a>
 				<ul class="dropdown">
-					{{link-to 'Schüler', 'students.index' tag='li'}}
-					{{link-to 'Lehrer', 'teachers.index' tag='li'}}
-					{{link-to 'Bücher', 'books.index' tag='li'}}
+					{{#active-link}}{{link-to 'Schüler' 'students.index'}}{{/active-link}}
+					{{#active-link}}{{link-to 'Lehrer' 'teachers.index'}}{{/active-link}}
+					{{#active-link}}{{link-to 'Bücher' 'books.index'}}{{/active-link}}
 				</ul>
 			</li>
-			{{link-to 'Einstellungen', 'settings' tag='li'}}
+			{{#active-link}}{{link-to 'Einstellungen' 'settings'}}{{/active-link}}
 			<li><a {{action 'invalidateSession'}}</a></li>
 			{{else}}
-			{{link-to 'Login', 'login' tag='li'}}
+			{{#active-link}}{{link-to 'Registrieren' 'register'}}{{/active-link}}
+			{{#active-link}}{{link-to 'Login' 'login'}}{{/active-link}}
 			{{/if}}
 		</ul>
 	</section>
+--}}
 </nav>
 {{outlet}}
+{{/app-canvas}}
