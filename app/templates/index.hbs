@@ -1,24 +1,10 @@
 <div class="row">
 <h3>Commits des <a href="https://github.com/philip98/obsidian-web-frontend/">Frontends</a></h3>
-<dl>
-{{#each model.frontend as |r|}}
-	<dt>
-		<a href={{r.html_url}}>{{r.sha}}</a>
-		am {{r.commit.author.date}}
-		von <a href={{r.author.html_url}}>{{r.author.login}} ({{r.commit.author.name}})</a>
-	</dt>
-	<dd><pre>{{r.commit.message}}</pre></dd>
-{{/each}}
-</dl>
+{{#commit-list data=model.frontend as |c|}}
+	{{commit-post commit=c}}
+{{/commit-list}}
 <h3>Commits des <a href="https://github.com/philip98/obsidian-web/">Backends</a></h3>
-<dl>
-{{#each model.backend as |r|}}
-	<dt>
-		<a href={{r.html_url}}>{{r.sha}}</a>
-		am {{r.commit.author.date}}
-		von <a href={{r.author.html_url}}>{{r.author.login}} ({{r.commit.author.name}})</a>
-	</dt>
-	<dd><pre>{{r.commit.message}}</pre></dd>
-{{/each}}
-</dl>
+{{#commit-list data=model.backend as |c|}}
+	{{commit-post commit=c}}
+{{/commit-list}}
 </div>
