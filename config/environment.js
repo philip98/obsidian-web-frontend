@@ -34,6 +34,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.data_host = 'localhost:3000'
   }
 
   if (environment === 'test') {
@@ -46,10 +47,11 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.data_host = 'localhost:3000'
   }
 
   if (environment === 'production') {
-
+    ENV.data_host = 'infinite-fortress-1954.herokuapp.com'
   }
 
   return ENV;
