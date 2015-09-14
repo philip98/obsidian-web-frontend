@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 				.then(this.prepareData)
 		});
 	},
-	prepareData: (data) => {
+	prepareData(data) {
 		data.forEach((r) => {
 			r.commit.author.date = (new Date(r.commit.author.date)).toLocaleString();
 			r.sha = r.sha.substring(0, 6);
