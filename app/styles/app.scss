@@ -1,2 +1,11 @@
 @import 'bower_components/foundation/scss/normalize';
 @import 'bower_components/foundation/scss/foundation';
+@import 'bower_components/foundation-icon-fonts/_foundation-icons';
+
+.no-margin {
+	margin: 0 !important;
+}
+
+.search-field {
+	margin-top: 10px;
+}

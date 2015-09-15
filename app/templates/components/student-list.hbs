@@ -1,0 +1,12 @@
+<thead>
+	<th>Name</th>
+	<th>Klasse</th>
+	<th>Aktionen</th>
+</thead>
+<tbody>
+{{#each data as |s|}}
+	{{yield s}}
+{{else}}
+	<tr>Kein Sch&uuml;ler vorhanden</tr>
+{{/each}}
+</tbody>

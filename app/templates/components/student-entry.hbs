@@ -1,0 +1,20 @@
+{{#unless isEditing}}
+<td>{{student.name}}</td>
+<td>{{student.student_class}}</td>
+<td>
+	<button {{action 'edit'}} class="button tiny secondary radius no-margin">
+		<i class="fi-pencil"></i>
+	</button>
+	<button {{action 'destroy'}} class="button tiny alert radius no-margin">
+		<i class="fi-x"></i>
+	</button>
+</td>
+{{else}}
+<td>{{input type='text' value=student.name class='no-margin'}}</td>
+<td>{{input type='text' value=student.student_class class='no-margin'}}</td>
+<td>
+	<button {{action 'saveChanges'}} class="button tiny success radius no-margin">
+		<i class="fi-check"></i>
+	</button>
+</td>
+{{/unless}}
