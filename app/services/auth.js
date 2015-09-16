@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from 'obsidian-web/config/environment';
 
 export default Ember.Service.extend({
 	setData(school, token, id) {
@@ -33,7 +34,7 @@ export default Ember.Service.extend({
 	authenticate(name, password) {
 		return Ember.$.ajax({
 			type: 'POST',
-			url:'/schools/sign_in', 
+			url: ENV.data_host + '/schools/sign_in', 
 			dataType: 'json',
 			contentType: 'application/json',
 			data: {
@@ -44,13 +45,13 @@ export default Ember.Service.extend({
 			this.setData(response.school_id, response.token, response.secret_id);
 			return true;
 		}, () => {
-			return false;
+			throw new Error('Falsches Passwort');
 		});
 	},
 	invalidate() {
 		return Ember.$.ajax({
 			type: 'DELETE',
-			url: '/schools/sign_out',
+			url: ENV.data_host + '/schools/sign_out',
 			headers: {
 				Authorization: 'Token token="' + this.secretToken() + '", secret_id="' + 
 					this.secretId() + '"'
@@ -59,7 +60,7 @@ export default Ember.Service.extend({
 			this.setData('', '', '');
 			return true;
 		}, () => {
-			return false;
+			throw new Error('Ein Fehler beim Ausloggen ist aufgetreten');
 		});
 	},
 	init() {

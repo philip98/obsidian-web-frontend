@@ -17,7 +17,7 @@
 				</ul>
 			</li>
 			{{#active-link}}{{link-to 'Einstellungen' 'settings'}}{{/active-link}}
-			<li><a {{action 'invalidateSession'}}</a></li>
+			<li><button {{action 'invalidateSession'}}></button></li>
 			{{else}}
 			{{#active-link}}{{link-to 'Registrieren' 'register'}}{{/active-link}}
 			{{#active-link}}{{link-to 'Login' 'login'}}{{/active-link}}

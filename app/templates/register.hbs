@@ -1,0 +1,26 @@
+<form {{action 'register' on='submit'}}>
+	<div class="row">
+		{{input type='text' value=name placeholder='Name der Schule'}}
+	</div>
+	<div class="row">
+		{{input type='password' value=password placeholder='Passwort'}}
+	</div>
+	<div class="row">
+	{{#if name}}
+		{{#if password}}
+			{{input type='submit' value='Registrieren' class='button radius'}}
+		{{else}}
+			{{input type='submit' value='Registrieren' class='button radius disabled'}}
+			<small class='error'>Das Passwort fehlt</small>
+		{{/if}}
+	{{else}}
+		{{#if password}}
+			{{input type='submit' value='Registrieren' class='button radius disabled'}}
+			<small class='error'>Der Name fehlt</small>
+		{{else}}
+			{{input type='submit' value='Registrieren' class='button radius disabled'}}
+			<small class='error'>Name und Passwort fehlen</small>
+		{{/if}}
+	{{/if}}
+	</div>
+</form>
