@@ -1,7 +1,7 @@
 {
   "name": "obsidian-web",
   "version": "0.0.0",
-  "description": "Small description for obsidian-web goes here",
+  "description": "Frontend to http://github.com/philip98/obsidian-web",
   "private": true,
   "directories": {
     "doc": "doc",
