@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 				name: this.get('name')
 			});
 			a.save().then(() => {
-				return this.get('auth').authenticate(this.get('name'), this.get('password'))
+				return this.get('auth').authenticate(this.get('name'), this.get('password'));
 			}, (reason) => {
 				this.set('invalidSchool', true);
 				throw new Error(String(reason));

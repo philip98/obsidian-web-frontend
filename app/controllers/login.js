@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 				this.set('invalidPassword', false);
 				this.set('name', '');
 				this.set('password', '');	
-				this.transitionTo('index');		
+				this.transitionToRoute('index');		
 			}, () => {
 				this.set('invalidPassword', true);
 				this.set('password', '');

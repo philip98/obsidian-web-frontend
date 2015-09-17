@@ -5,26 +5,24 @@
 			<h1>{{link-to 'Obsidian Web' 'index'}}</h1>
 		</li>
 	</ul>
-{{!--
-	<section class="topbar-section">
-		<ul class="right">{{#if auth.isAuthenticated()}}
+	<section class="top-bar-section">
+		<ul class="right">{{#if isAuthenticated}}
 			<li class="has-dropdown">
 				<a href="#">Tabellen</a>
 				<ul class="dropdown">
-					{{#active-link}}{{link-to 'Schüler' 'students.index'}}{{/active-link}}
+					{{#active-link}}{{link-to 'Schüler' 'students.index'}}{{/active-link}} {{!--
 					{{#active-link}}{{link-to 'Lehrer' 'teachers.index'}}{{/active-link}}
-					{{#active-link}}{{link-to 'Bücher' 'books.index'}}{{/active-link}}
+					{{#active-link}}{{link-to 'Bücher' 'books.index'}}{{/active-link}}--}}
 				</ul>
-			</li>
-			{{#active-link}}{{link-to 'Einstellungen' 'settings'}}{{/active-link}}
-			<li><button {{action 'invalidateSession'}}></button></li>
+			</li>{{!--
+			{{#active-link}}{{link-to 'Einstellungen' 'settings'}}{{/active-link}}--}}
+			<li><a {{action 'invalidateSession'}}>Logout</a></li>
 			{{else}}
 			{{#active-link}}{{link-to 'Registrieren' 'register'}}{{/active-link}}
 			{{#active-link}}{{link-to 'Login' 'login'}}{{/active-link}}
 			{{/if}}
 		</ul>
 	</section>
---}}
 </nav>
 {{outlet}}
 {{/app-canvas}}

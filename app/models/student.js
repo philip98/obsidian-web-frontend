@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import Person from 'obsidian-web/models/person';
+import Ember from 'ember';
 
 export default Person.extend({
 	name: DS.attr(),
