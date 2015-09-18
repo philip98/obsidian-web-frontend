@@ -18,6 +18,7 @@
     "ember": ">= 2.0.0"
   },
   "devDependencies": {
-    "foundation": "~5.5.2"
+    "foundation": "~5.5.2",
+    "foundation-icon-fonts": "*"
   }
 }
