@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	name: '',
 	password: '',
+	valid: Ember.computed.and('name', 'password'),
 	invalidSchool: false,
 	actions: {
 		register() {

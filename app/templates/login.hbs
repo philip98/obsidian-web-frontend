@@ -6,14 +6,12 @@
 		<div class="panel radius">
 			<form {{action 'login' on='submit'}}>
 				<div class="row">
-					{{input type='text' value=name placeholder='Name der Schule'}}
+					{{input type='text' value=name placeholder='Name der Schule' class='radius'}}
 				</div>
 				<div class="row">
+					{{input type='password' value=password placeholder='Passwort' class=(if invalidPassword 'radius error' 'radius')}}
 					{{#if invalidPassword}}
-					{{input type='password' value=password placeholder='Passwort' class='error'}}
 					<small class="error">Ung&uuml;ltiges Passwort</small>
-					{{else}}
-					{{input type='password' value=password placeholder='Passwort'}}
 					{{/if}}
 				</div>
 				<div class="row">

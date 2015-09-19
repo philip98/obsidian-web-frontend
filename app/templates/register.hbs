@@ -1,26 +1,20 @@
 <form {{action 'register' on='submit'}}>
 	<div class="row">
-		{{input type='text' value=name placeholder='Name der Schule'}}
+		{{input type='text' value=name placeholder='Name der Schule' class=(if name 'radius' 'radius error')}}
+		{{#unless name}}
+		<small class="error">Name fehlt</small>
+		{{/unless}}
 	</div>
 	<div class="row">
-		{{input type='password' value=password placeholder='Passwort'}}
+		{{input type='password' value=password placeholder='Passwort' class=(if password 'radius' 'radius error')}}
+		{{#unless name}}
+		<small class="error">Passwort fehlt</small>
+		{{/unless}}
 	</div>
 	<div class="row">
-	{{#if name}}
-		{{#if password}}
-			{{input type='submit' value='Registrieren' class='button radius'}}
-		{{else}}
-			{{input type='submit' value='Registrieren' class='button radius disabled'}}
-			<small class='error'>Das Passwort fehlt</small>
-		{{/if}}
-	{{else}}
-		{{#if password}}
-			{{input type='submit' value='Registrieren' class='button radius disabled'}}
-			<small class='error'>Der Name fehlt</small>
-		{{else}}
-			{{input type='submit' value='Registrieren' class='button radius disabled'}}
-			<small class='error'>Name und Passwort fehlen</small>
-		{{/if}}
-	{{/if}}
+		{{input type='submit' value='Registrieren' class=(if valid 'button radius' 'button radius disabled')}}
+		{{#unless valid}}
+		<small class="error">Unvollst&auml;ndige Angaben</small>
+		{{/unless}}
 	</div>
 </form>

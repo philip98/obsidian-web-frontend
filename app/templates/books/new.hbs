@@ -7,22 +7,22 @@
 		<div class="panel radius">
 			<form {{action 'create' on='submit'}}>
 				<div class="row">
-					{{input type='text' placeholder='Titel' value=title}}
+					{{input type='text' placeholder='Titel' value=title class='radius'}}
 				</div>
 				<div class="row">
-					{{input type='text' placeholder='ISBN' value=isbn class=(if isbnValid '' 'error')}}
+					{{input type='text' placeholder='ISBN' value=isbn class=(if isbnValid 'radius' 'radius error')}}
 					{{#unless isbnValid}}
 					<small class="error">Muss eine 13-stellige Zahl sein</small>
 					{{/unless}}
 				</div>
 				<div class="row">
-					{{input type='text' placeholder='Jahrgangsstufen' value=form class=(if formValid '' 'error')}}
+					{{input type='text' placeholder='Jahrgangsstufen' value=form class=(if formValid 'radius' 'radius error')}}
 					{{#unless formValid}}
 					<small class="error">Muss eine durch Leerzeichen getrennte Liste von Zahlen sein</small>
 					{{/unless}}
 				</div>
 				<div class="row">
-					{{input type='submit' value='Erstellen' class=(if errorMessage 'button radius error' 'button radius')}}
+					{{input type='submit' value='Erstellen' class=(if errorMessage 'button radius alert' 'button radius')}}
 					{{#if errorMessage}}
 					<small class="error">{{errorMessage}}</small>
 					{{/if}}
