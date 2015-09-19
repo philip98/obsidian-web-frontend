@@ -1,12 +1,13 @@
 <thead>
+	<th width="75"></th>
 	<th>Name</th>
-	<th>Klasse</th>
-	<th>Aktionen</th>
+	<th width="125">Klasse</th>
+	<th width="125">Aktionen</th>
 </thead>
 <tbody>
 {{#each data as |s|}}
 	{{yield s}}
 {{else}}
-	<tr>Kein Sch&uuml;ler vorhanden</tr>
+	<tr><td colspan="3"><em>Kein Sch&uuml;ler vorhanden</em></td></tr>
 {{/each}}
 </tbody>

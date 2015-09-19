@@ -1,13 +1,41 @@
 <div class="row">
-	<div class="medium-2 medium-offset-10 columns">
+	<h1>Alle Sch&uuml;ler</h1>
+</div>
+
+<div class="row">
+	<div class="medium-10 columns">
+		{{#link-to 'students.new' class="button tiny success radius"}}
+			<i class="fi-plus"></i>
+		{{/link-to}}
+	</div>
+	<div class="medium-2 columns">
 		{{input type='text' class='search-field' value=query placeholder='Suchen'}}
 	</div>
 </div>
 
 <div class="row">
 	<div class="medium-12 columns">
-{{#student-list data=filteredData as |s|}}
-	{{student-entry student=s}}
-{{/student-list}}
+		{{#student-list data=filteredData as |s|}}
+			{{student-entry student=s action=(action 'reload')}}
+		{{/student-list}}
 	</div>
 </div>
+
+{{#if checkedStudents}}
+<div class="row">
+	<div class="medium-10 medium-offset-1 columns">
+		<div class="panel radius">
+			<div class="row collapse postfix-radius">
+				<div class="small-9 columns">
+					{{input type='text' value=klass class='no-margin'}}
+				</div>
+				<div class="small-3 columns">
+					<button class="button postfix no-margin" {{action 'massEdit'}}>
+						Klasse &auml;ndern
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{/if}}

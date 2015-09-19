@@ -1,16 +1,25 @@
-<form {{action 'login' on='submit'}}>
-	<div class="row">
-		{{input type='text' value=name placeholder='Name der Schule'}}
+<div class="row">
+	<h1>Login</h1>
+</div>
+<div class="row">
+	<div class="medium-6 medium-offset-3 column">
+		<div class="panel radius">
+			<form {{action 'login' on='submit'}}>
+				<div class="row">
+					{{input type='text' value=name placeholder='Name der Schule'}}
+				</div>
+				<div class="row">
+					{{#if invalidPassword}}
+					{{input type='password' value=password placeholder='Passwort' class='error'}}
+					<small class="error">Ung&uuml;ltiges Passwort</small>
+					{{else}}
+					{{input type='password' value=password placeholder='Passwort'}}
+					{{/if}}
+				</div>
+				<div class="row">
+					{{input type='submit' value='Einloggen' class='button radius'}}
+				</div>
+			</form>
+		</div>
 	</div>
-	<div class="row">
-		{{#if invalidPassword}}
-		{{input type='password' value=password placeholder='Passwort' class='error'}}
-		<small class="error">Ung&uuml;ltiges Passwort</small>
-		{{else}}
-		{{input type='password' value=password placeholder='Passwort'}}
-		{{/if}}
-	</div>
-	<div class="row">
-		{{input type='submit' value='Einloggen' class='button radius'}}
-	</div>
-</form>
+</div>

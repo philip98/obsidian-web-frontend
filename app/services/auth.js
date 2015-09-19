@@ -7,30 +7,28 @@ export default Ember.Service.extend({
 		window.sessionStorage.currentSchoolId = school;
 		window.sessionStorage.secretId = id;
 	},
-	secretToken() {
+	secretToken: function() {
 		if (window.sessionStorage.secretToken) {
 			return window.sessionStorage.secretToken;
 		} else {
 			return '';
 		}
 	},
-	secretId() {
+	secretId: function() {
 		if (window.sessionStorage.secretId) {
 			return window.sessionStorage.secretId;
 		} else {
 			return '';
 		}
 	},
-	currentSchoolId() {
+	currentSchoolId: function() {
 		if (window.sessionStorage.currentSchoolId) {
 			return window.sessionStorage.currentSchoolId;
 		} else {
 			return '';
 		}
 	},
-	isAuthenticated() {
-		return Boolean(this.currentSchoolId() && this.secretId() && this.secretToken());
-	},
+	isAuthenticated: Ember.computed.and('secretToken', 'secretId', 'currentSchoolId'),
 	authenticate(name, password) {
 		return Ember.$.ajax({
 			type: 'POST',
@@ -54,13 +52,9 @@ export default Ember.Service.extend({
 	invalidate() {
 		return Ember.$.ajax({
 			type: 'DELETE',
-			url: ENV.data_host + '/schools/sign_out',
-			headers: {
-				Authorization: 'Token token="' + this.secretToken() + '", secret_id="' + 
-					this.secretId() + '"'
-			}
+			url: ENV.data_host + '/schools/sign_out'
 		}).then(() => {
-			this.setData(undefined, undefined, undefined);
+			this.setData('', '', '');
 			return true;
 		}, () => {
 			throw new Error('Ein Fehler beim Ausloggen ist aufgetreten');
@@ -68,7 +62,7 @@ export default Ember.Service.extend({
 	},
 	init() {
 		Ember.$.ajaxPrefilter((options, originalOptions, jqXHR) => {
-			if (this.isAuthenticated() && options.url.indexOf(ENV.data_host) > -1) {
+			if (this.isAuthenticated && options.url.indexOf(ENV.data_host) > -1) {
 				jqXHR.setRequestHeader('Authorization', 'Token token="' + this.secretToken() + 
 					'", secret_id="' + this.secretId() + '"');
 			}

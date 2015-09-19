@@ -1,6 +1,7 @@
 {{#unless isEditing}}
+<td>{{input type='checkbox' checked=student.checked class='no-margin'}}</td>
 <td>{{student.name}}</td>
-<td>{{student.student_class}}</td>
+<td  class="student-class">{{student.klass}}</td>
 <td>
 	<button {{action 'edit'}} class="button tiny secondary radius no-margin">
 		<i class="fi-pencil"></i>
@@ -10,8 +11,9 @@
 	</button>
 </td>
 {{else}}
+<td></td>
 <td>{{input type='text' value=student.name class='no-margin'}}</td>
-<td>{{input type='text' value=student.student_class class='no-margin'}}</td>
+<td>{{input type='text' value=student.klass class='no-margin'}}</td>
 <td>
 	<button {{action 'saveChanges'}} class="button tiny success radius no-margin">
 		<i class="fi-check"></i>

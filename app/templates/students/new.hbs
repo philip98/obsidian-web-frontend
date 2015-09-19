@@ -1,0 +1,33 @@
+<div class="row">
+	<h1>Neuer Sch&uuml;ler</h1>
+</div>
+
+<div class="row">
+	<div class="medium-6 medium-offset-3 column">
+		<div class="panel radius">
+			<form {{action 'create' on='submit'}}>
+				<div class="row">
+					{{input type='text' placeholder='Name' value=name}}
+				</div>
+				<div class="row">
+					{{input type='text' placeholder='Abschlussjahr' value=gradYear class=(if gradYearValid '' 'error')}}
+					{{#unless gradYearValid}}
+					<small class="error">Ung&uuml;ltiges Abschlussjahr (>1999)</small>
+					{{/unless}}
+				</div>
+				<div class="row">
+					{{input type='text' placeholder='Klassenbuchstabe' value=classLetter class=(if classLetterValid '' 'error')}}
+					{{#unless classLetterValid}}
+					<small class="error">Ung&uuml;ltiger Klassenbuchstabe (1 Zeichen)</small>
+					{{/unless}}
+				</div>
+				<div class="row">
+					{{input type='submit' value='Erstellen' class=(if errorMessage 'button radius error' 'button radius')}}
+					{{#if errorMessage}}
+					<small class="error">{{errorMessage}}</small>
+					{{/if}}
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
