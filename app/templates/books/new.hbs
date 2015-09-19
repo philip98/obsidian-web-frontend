@@ -22,10 +22,10 @@
 					{{/unless}}
 				</div>
 				<div class="row">
-					{{input type='submit' value='Erstellen' class=(if errorMessage 'button radius alert' 'button radius')}}
-					{{#if errorMessage}}
-					<small class="error">{{errorMessage}}</small>
-					{{/if}}
+					{{input type='submit' value='Erstellen' class=(if valid 'button radius' 'button radius disabled')}}
+					{{#unless valid}}
+					<small class="error">Ung&uuml;ltige Angaben</small>
+					{{/unless}}
 				</div>
 			</form>
 		</div>

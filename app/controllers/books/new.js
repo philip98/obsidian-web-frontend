@@ -4,12 +4,9 @@ export default Ember.Controller.extend({
 	title: '',
 	isbn: '',
 	form: '',
-	isbnValid: Ember.computed('isbn', function() {
-		return this.get('isbn').match(/^\d{13}$/);
-	}),
-	formValid: Ember.computed('form', function() {
-		return this.get('form').match(/^(\d+\s*)+$/);
-	}),
+	isbnValid: Ember.computed.match('isbn', /^\d{13}$/),
+	formValid: Ember.computed.match('form', /^(\d+\s*)+$/),
+	valid: Ember.computed.and('isbnValid', 'formValid'),
 	actions: {
 		create() {
 			if (this.get('isbnValid') && this.get('formValid')) {

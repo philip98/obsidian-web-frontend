@@ -4,12 +4,11 @@ export default Ember.Controller.extend({
 	name: '',
 	gradYear: '',
 	classLetter: '',
-	gradYearValid: function() {
-		return Number(this.get('gradYear')) >= 2000;
-	}.property('gradYear'),
-	classLetterValid: function() {
+	gradYearValid: Ember.computed.gte('gradYear', 2000),
+	classLetterValid: Ember.computed('classLetter', function() {
 		return this.get('classLetter').length <= 1;
-	}.property('classLetter'),
+	}),
+	valid: Ember.computed.and('classLetterValid', 'gradYearValid'),
 	actions: {
 		create() {
 			if (this.get('gradYearValid') && this.get('classLetterValid') && this.get('name')) {

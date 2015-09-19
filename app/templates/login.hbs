@@ -15,7 +15,10 @@
 					{{/if}}
 				</div>
 				<div class="row">
-					{{input type='submit' value='Einloggen' class='button radius'}}
+					{{input type='submit' value='Einloggen' class=(if valid 'button radius' 'button radius disabled')}}
+					{{#unless valid}}
+					<small class="error">Unvollst&auml;ndige Angaben</small>
+					{{/unless}}
 				</div>
 			</form>
 		</div>

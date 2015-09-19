@@ -25,6 +25,14 @@ input[type="submit"] {
 	margin-bottom: 0;
 }
 
+.button.disabled {
+	pointer-events: none;
+}
+
+input.error {
+	border-color: #ff0000 !important;
+}
+
 select.class-list {
 	width: 150px;
 }
