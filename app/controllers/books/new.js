@@ -12,20 +12,22 @@ export default Ember.Controller.extend({
 	}),
 	actions: {
 		create() {
-			let r = this.store.createRecord('book', {
-				title: this.get('title'),
-				isbn: this.get('isbn'),
-				form: this.get('form')
-			});
-			return r.save().then(() => {
-				this.set('title', '');
-				this.set('isbn', '');
-				this.set('form', '');
-				this.set('errorMessage', '');
-				return this.transitionToRoute('books.index');
-			}, (reason) => {
-				this.set('errorMessage', String(reason));
-			});
+			if (this.get('isbnValid') && this.get('formValid')) {
+				let r = this.store.createRecord('book', {
+					title: this.get('title'),
+					isbn: this.get('isbn'),
+					form: this.get('form')
+				});
+				return r.save().then(() => {
+					this.set('title', '');
+					this.set('isbn', '');
+					this.set('form', '');
+					this.set('errorMessage', '');
+					return this.transitionToRoute('books.index');
+				}, (reason) => {
+					this.set('errorMessage', String(reason));
+				});
+			}
 		}
 	}
 });
