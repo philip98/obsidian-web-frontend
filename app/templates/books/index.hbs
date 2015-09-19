@@ -1,0 +1,22 @@
+<div class="row">
+	<h1>Alle B&uuml;cher</h1>
+</div>
+
+<div class="row">
+	<div class="medium-10 columns">
+		{{#link-to 'books.new' class='button tiny success radius'}}
+			<i class="fi-plus"></i>
+		{{/link-to}}
+	</div>
+	<div class="medium-2 columns">
+		{{input type='text' class='search-field radius' value=query placeholder='Suchen'}}
+	</div>
+</div>
+
+<div class="row">
+	<div class="medium-12 columns">
+		{{#book-list data=searchedData as |b|}}
+			{{book-entry book=b action=(action 'reload')}}
+		{{/book-list}}
+	</div>
+</div>

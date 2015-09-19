@@ -1,0 +1,22 @@
+{{#unless isEditing}}
+<td>{{link-to book.title 'books.show' book}}</td>
+<td>{{book.isbn}}</td>
+<td>{{book.form}}</td>
+<td>
+	<button class="button tiny secondary radius no-margin" {{action 'edit'}}>
+		<i class="fi-pencil"></i>
+	</button>
+	<button class="button tiny alert radius no-margin" {{action 'destroy'}}>
+		<i class="fi-x"></i>
+	</button>
+</td>
+{{else}}
+<td>{{input type='text' class='no-margin' value=book.title}}</td>
+<td>{{input type='text' class='no-margin' value=book.isbn}}</td>
+<td>{{input type='text' class='no-margin' value=book.form}}</td>
+<td>
+	<button class="button tiny success radius no-margin" {{action 'saveChanges'}}>
+		<i class="fi-check"></i>
+	</button>
+</td>
+{{/unless}}

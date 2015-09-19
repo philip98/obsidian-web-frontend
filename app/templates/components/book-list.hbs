@@ -1,0 +1,13 @@
+<thead>
+	<th>Titel</th>
+	<th>ISBN</th>
+	<th width="200">Jahrgangsstufen</th>
+	<th width="125">Aktionen</th>
+</thead>
+<tbody>
+{{#each data as |d|}}
+{{yield d}}
+{{else}}
+<tr><td colspan="4"><em>Keine B&uuml;cher vorhanden</em></td></tr>
+{{/each}}
+</tbody>
