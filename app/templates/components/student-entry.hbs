@@ -1,7 +1,7 @@
 {{#unless isEditing}}
 <td>{{input type='checkbox' checked=student.checked class='no-margin'}}</td>
-<td>{{student.name}}</td>
-<td  class="student-class">{{student.klass}}</td>
+<td>{{link-to student.name 'students.show' student}}</td>
+<td class="student-class">{{student.klass}}</td>
 <td>
 	<button {{action 'edit'}} class="button tiny secondary radius no-margin">
 		<i class="fi-pencil"></i>

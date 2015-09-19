@@ -19,9 +19,13 @@ export default Ember.Controller.extend({
 					classLetter: this.get('classLetter')
 				});
 				return r.save().then(() => {
+					this.set('name', '');
+					this.set('gradYear', '');
+					this.set('classLetter', '');
+					this.set('errorMessage', '');
 					return this.transitionToRoute('students.index');
 				}, (reason) => {
-					this.set('errorMessage', 'Konnte nicht erstellt werden: ' + reason);
+					this.set('errorMessage', String(reason));
 				});
 			}
 		}

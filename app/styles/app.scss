@@ -16,7 +16,7 @@ h1 {
 	text-align: center;
 }
 
-.student-list {
+table {
 	width: 100%;
 }
 
@@ -27,4 +27,12 @@ input[type="submit"] {
 
 select.class-list {
 	width: 150px;
+}
+
+.free {
+	background-color: #88ff88 !important;
+}
+
+.partially-free {
+	background-color: #ccffcc !important;
 }

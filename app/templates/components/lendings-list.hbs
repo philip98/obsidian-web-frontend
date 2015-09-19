@@ -1,0 +1,11 @@
+<thead>
+	<th width="150">Datum</th>
+	<th>Titel</th>
+</thead>
+<tbody>
+{{#each data as |d|}}
+{{yield d}}
+{{else}}
+<tr><td colspan="2"><em>Keine Ausleihen</em></td></tr>
+{{/each}}
+</tbody>

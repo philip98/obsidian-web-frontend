@@ -1,0 +1,30 @@
+<div class="row">
+	<h1>{{model.name}}</h1>
+</div>
+
+<div class="row">
+	<div class="medium-6 columns">
+		<h3>Basissatz:</h3>
+		{{#link-to 'students.lend-base' model class='button tiny success radius'}}
+			<i class="fi-plus"></i>
+		{{/link-to}}
+		{{#link-to 'students.return-base' model class='button tiny alert radius'}}
+			<i class="fi-minus"></i>
+		{{/link-to}}
+		{{#lendings-list data=model.baseSets as |bs|}}
+			{{lendings-entry lending=bs}}
+		{{/lendings-list}}
+	</div>
+	<div class="medium-6 columns">
+		<h3>Ausleihen:</h3>
+		{{#link-to 'lendings.lend' 'student' model.id class="button tiny success radius"}}
+			<i class="fi-plus"></i>
+		{{/link-to}}
+		{{#link-to 'lendings.return' 'student' model.id class="button tiny alert radius"}}
+			<i class="fi-minus"></i>
+		{{/link-to}}
+		{{#lendings-list data=model.lendings as |l|}}
+			{{lendings-entry lending=l}}
+		{{/lendings-list}}
+	</div>
+</div>

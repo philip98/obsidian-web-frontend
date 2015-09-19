@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
 	searchedData: Ember.computed('filteredData', 'query', function() {
 		if (this.get('query')) {
 			return this.get('filteredData').filter((item) => {
-				return item.get('name').toLowerCase().indexOf(this.get('query')) > -1;
+				return item.get('name').toLowerCase().indexOf(this.get('query').toLowerCase()) > -1;
 			});
 		} else {
 			return this.get('filteredData');
