@@ -68,8 +68,8 @@ export default Ember.Service.extend({
 	init() {
 		Ember.$.ajaxPrefilter((options, originalOptions, jqXHR) => {
 			if (this.isAuthenticated && options.url.indexOf(ENV.data_host) > -1) {
-				jqXHR.setRequestHeader('Authorization', 'Token token="' + this.secretToken + 
-					'", secret_id="' + this.secretId + '"');
+				jqXHR.setRequestHeader('Authorization', 'Token token="' + this.get('secretToken') + 
+					'", secret_id="' + this.get('secretId') + '"');
 			}
 		});
 	}
