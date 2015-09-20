@@ -5,15 +5,8 @@ export default Ember.Component.extend({
 	klass: '',
 	classNameBindings: ['free', 'partiallyFree:partially-free:'],
 	isEditing: false,
-	partiallyFree: Ember.computed('student.baseSets.@each.form', function () {
-		let [,form,] = this.get('student.klass').split(/(\d+)/);
-		return this.get('student.baseSets').every((item) => {
-			return item.get('form').indexOf(String(Number(form) + 1)) > -1;
-		});
-	}),
-	free: Ember.computed('student.baseSets', 'student.lendings', function () {
-		return (this.get('student.baseSets').length === 0 && this.get('student.lendings').length === 0);
-	}),
+	free: Ember.computed.alias('student.isFree'),
+	partiallyFree: Ember.computed.alias('student.isPartiallyFree'),
 	actions: {
 		destroy() {
 			window.alert("Sicher?");

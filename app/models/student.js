@@ -6,7 +6,7 @@ export default Person.extend({
 	name: DS.attr(),
 	graduationYear: DS.attr('number'),
 	classLetter: DS.attr(),
-	baseSets: DS.hasMany('baseSet'),
+	baseSets: DS.hasMany('baseSet', {async: true}),
 	klass: Ember.computed('graduationYear', 'classLetter', {
 		get() {
 			let now = new Date();
@@ -25,5 +25,17 @@ export default Person.extend({
 				this.set('graduationYear', now.getFullYear() + 12 - Number(fo));
 			}
 		}
+	}),
+	isFree: Ember.computed('baseSets.[]', 'lendings.[]', function() {
+		return this.get('baseSets.length') === 0 && this.get('lendings.length') === 0;
+	}),
+	isPartiallyFree: Ember.computed('baseSets.@each.book.form', 'lendings.@each.book.form', function() {
+		return this.get('baseSets').every((baseSet) => {
+			return String(baseSet.get('book.form')).indexOf(String((new Date()).getFullYear() + 13 - 
+				this.get('graduationYear'))) > -1;
+		}) && this.get('lendings').every((lending) => {
+			return String(lending.get('book.form')).indexOf(String((new Date()).getFullYear() + 13 - 
+				this.get('graduationYear'))) > -1;
+		});
 	})
 });
