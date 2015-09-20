@@ -1,0 +1,10 @@
+<div class="row collapse postfix-radius">
+	<div class="small-6 columns">
+		{{input type='text' class=(if isbn.error 'radius error' 'radius') value=isbn.text focus-out='inputBlur'}}
+	</div>
+	<div class="small-6 columns">
+		<span class={{if isbn.error 'postfix error' 'postfix'}}>
+			{{if isbn.error 'Buch wurde nicht gefunden' isbn.book.title}}
+		</span>
+	</div>
+</div>
