@@ -28,7 +28,6 @@ export default Ember.Controller.extend({
 					isbn.set('error', false);
 					isbn.set('book', alias.get('0.book'));
 				}
-				console.log(isbn.get('book'));
 				this.get('isbns').pushObject(Isbn.create());
 			});
 		},
@@ -46,6 +45,8 @@ export default Ember.Controller.extend({
 				});
 			});
 			if (errors.get('length') === 0) {
+				this.get('isbns').clear();
+				this.get('isbns').pushObjects(Isbn.create(), Isbn.create());
 				this.transitionToRoute('students.index', {
 					queryParams: {
 						klass: this.get('model.klass'),
