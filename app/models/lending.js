@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	book: DS.belongsTo('book', {async: false}),
+	createdAt: DS.attr(),
+	book: DS.belongsTo('book', {async: true}),
 	lender: DS.belongsTo('person', {polymorphic: true})
 });

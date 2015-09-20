@@ -6,5 +6,5 @@ export default DS.Model.extend({
 	form: DS.attr(),
 	aliases: DS.hasMany('alias', {async: true}),
 	lendings: DS.hasMany('lending', {async: true}),
-	base_sets: DS.hasMany('base-set', {async: true})
+	baseSets: DS.hasMany('baseSet', {async: true})
 });

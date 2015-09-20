@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	created_at: DS.attr(),
-	book: DS.belongsTo('book', {async: false}),
+	createdAt: DS.attr(),
+	book: DS.belongsTo('book', {async: true}),
 	student: DS.belongsTo('student')
 });
