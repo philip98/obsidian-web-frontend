@@ -2,6 +2,7 @@ import Ember from 'ember';
 import ENV from 'obsidian-web/config/environment';
 
 export default Ember.Service.extend({
+	changed: false,
 	setData(school, token, id) {
 		window.sessionStorage.secretToken = token;
 		window.sessionStorage.currentSchoolId = school;
@@ -13,22 +14,24 @@ export default Ember.Service.extend({
 		} else {
 			return '';
 		}
-	},
+	}.property().volatile(),
 	secretId: function() {
 		if (window.sessionStorage.secretId) {
 			return window.sessionStorage.secretId;
 		} else {
 			return '';
 		}
-	},
+	}.property().volatile(),
 	currentSchoolId: function() {
 		if (window.sessionStorage.currentSchoolId) {
 			return window.sessionStorage.currentSchoolId;
 		} else {
 			return '';
 		}
-	},
-	isAuthenticated: Ember.computed.and('secretToken', 'secretId', 'currentSchoolId'),
+	}.property().volatile(),
+	isAuthenticated: Ember.computed('secretToken', 'secretId', 'currentSchoolId', 'changed', function() {
+		return this.get('secretToken') && this.get('secretId') && this.get('currentSchoolId');
+	}),
 	authenticate(name, password) {
 		return Ember.$.ajax({
 			type: 'POST',
@@ -44,6 +47,7 @@ export default Ember.Service.extend({
 			})
 		}).then((response) => {
 			this.setData(response.school_id, response.token, response.secret_id);
+			this.toggleProperty('changed');
 			return true;
 		}, () => {
 			throw new Error('Falsches Passwort');
@@ -55,6 +59,7 @@ export default Ember.Service.extend({
 			url: ENV.data_host + '/schools/sign_out'
 		}).then(() => {
 			this.setData('', '', '');
+			this.toggleProperty('changed');
 			return true;
 		}, () => {
 			throw new Error('Ein Fehler beim Ausloggen ist aufgetreten');
@@ -63,8 +68,8 @@ export default Ember.Service.extend({
 	init() {
 		Ember.$.ajaxPrefilter((options, originalOptions, jqXHR) => {
 			if (this.isAuthenticated && options.url.indexOf(ENV.data_host) > -1) {
-				jqXHR.setRequestHeader('Authorization', 'Token token="' + this.secretToken() + 
-					'", secret_id="' + this.secretId() + '"');
+				jqXHR.setRequestHeader('Authorization', 'Token token="' + this.secretToken + 
+					'", secret_id="' + this.secretId + '"');
 			}
 		});
 	}
