@@ -1,0 +1,32 @@
+<div class="row">
+	<h1>{{model.title}}</h1>
+</div>
+
+<div class="row">
+	<div class="medium-6 medium-offset-3 columns">
+		<h3>Aliasse:</h3>
+		
+		<button class="button tiny success radius" data-reveal-id="addAlias">
+			<i class="fi-plus"></i>
+		</button>
+	</div>
+</div>
+
+<div class="row">
+	<div class="medium-6 medium-offset-3 columns">
+		{{#alias-list data=model.aliases as |a|}}
+			{{alias-entry alias=a action=(action 'reload')}}
+		{{/alias-list}}
+	</div>
+</div>
+
+<div class="reveal-modal small" id="addAlias" data-reveal>
+	<a class="close-reveal-modal">&#215;</a>
+	<h2 id="addAliasTitle">Neuer Alias</h2>
+	<p>
+			{{input type='text' value=(mut name) placeholder='Name' class=(if name 'radius' 'radius error')}}
+	</p>
+	<p>
+		<button class={{if name 'button success radius' 'button disabled radius'}} {{action 'save'}}>OK</button>
+	</p>
+</div>
