@@ -1,0 +1,12 @@
+<thead>
+	<th>Name</th>
+	<th width="125">Aktionen</th>
+</thead>
+
+<tbody>
+{{#each data as |a|}}
+{{yield a}}
+{{else}}
+<tr><td colspan="2"><em>Keine Aliasse vorhanden</em></td></tr>
+{{/each}}
+</tbody>
