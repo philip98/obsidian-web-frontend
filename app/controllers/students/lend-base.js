@@ -46,7 +46,7 @@ export default Ember.Controller.extend({
 			});
 			if (errors.get('length') === 0) {
 				this.get('isbns').clear();
-				this.get('isbns').pushObjects(Isbn.create(), Isbn.create());
+				this.get('isbns').pushObjects([Isbn.create(), Isbn.create()]);
 				this.transitionToRoute('students.index', {
 					queryParams: {
 						klass: this.get('model.klass'),
