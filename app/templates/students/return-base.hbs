@@ -1,0 +1,23 @@
+<div class="row">
+	<h1>Zur&uuml;ckgeben (Basissatz)</h1>
+</div>
+
+<div class="row">
+	<div class="medium-10 medium-offset-1 columns">
+		<div class="row">
+			{{#isbn-list data=isbns as |i|}}
+				{{isbn-entry isbn=i action=(action 'load')}}
+			{{/isbn-list}}
+		</div>
+		<div class="row">
+			<button class="button success radius" {{action 'save'}}>Zur&uuml;ckgeben</button>
+			{{#if errors}}
+			<small class="error">
+				{{#each errors as |e|}}
+				{{e}}<br>
+				{{/each}}
+			</small>
+			{{/if}}
+		</div>
+	</div>
+</div>
