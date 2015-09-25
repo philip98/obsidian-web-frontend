@@ -1,13 +1,19 @@
 import Ember from 'ember';
 
 export let Isbn = Ember.Object.extend({
-	book: {},
-	text: '',
-	error: false
+	init() {
+		this._super(arguments);
+		this.book = {};
+		this.text = '';
+		this.error = false;
+	}
 });
 
 export default Ember.Controller.extend({
-	isbns: Ember.A([Isbn.create(), Isbn.create()]),
+	init() {
+		this._super(arguments);
+		this.isbns = Ember.A([Isbn.create(), Isbn.create()]);
+	},
 	actions: {
 		load(isbn) {
 			let text = isbn.get('text');
@@ -32,7 +38,6 @@ export default Ember.Controller.extend({
 			});
 		},
 		save() {
-			let errors = Ember.A([]);
 			this.get('isbns').forEach((isbn) => {
 				if (!isbn.get('book')) {
 					return;
@@ -41,21 +46,17 @@ export default Ember.Controller.extend({
 					student: this.get('model'),
 					book: isbn.get('book')
 				}).save().catch((reason) => {
-					errors.pushObject(reason);
+					this.get('flashMessages').danger(reason);
 				});
 			});
-			if (errors.get('length') === 0) {
-				this.get('isbns').clear();
-				this.get('isbns').pushObjects([Isbn.create(), Isbn.create()]);
-				this.transitionToRoute('students.index', {
-					queryParams: {
-						klass: this.get('model.klass'),
-						view: 'list'
-					}
-				});
-			} else {
-				this.set('errors', errors);
-			}
+			this.get('isbns').clear();
+			this.get('isbns').pushObjects([Isbn.create(), Isbn.create()]);
+			this.transitionToRoute('students.index', {
+				queryParams: {
+					klass: this.get('model.klass'),
+					view: 'list'
+				}
+			});
 		}
 	}
 });

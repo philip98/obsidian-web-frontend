@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	name: '',
-	gradYear: '',
-	classLetter: '',
+	init() {
+		this._super(arguments);
+		this.name = '';
+		this.gradYear = '';
+		this.classLetter = '';
+		this.
+	},
 	gradYearValid: Ember.computed.gte('gradYear', 2000),
-	classLetterValid: Ember.computed('classLetter', function() {
-		return this.get('classLetter').length <= 1;
-	}),
+	classLetterValid: Ember.computed.lte('classLetter.length', 1),
 	valid: Ember.computed.and('classLetterValid', 'gradYearValid'),
 	actions: {
 		create() {
@@ -22,9 +24,10 @@ export default Ember.Controller.extend({
 					this.set('gradYear', '');
 					this.set('classLetter', '');
 					this.set('errorMessage', '');
+					this.get('flashMessages').success('Schüler erfolgreich erstellt');
 					return this.transitionToRoute('students.index');
 				}, (reason) => {
-					this.set('errorMessage', String(reason));
+					this.get('flashMessages').danger(reason);
 				});
 			}
 		}

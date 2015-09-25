@@ -24,5 +24,8 @@
 		</ul>
 	</section>
 </nav>
+{{#each flashMessages.queue as |flash|}}
+{{flash-message flash=flash messageStyle='foundation' class='radius'}}
+{{/each}}
 {{outlet}}
 {{/app-canvas}}

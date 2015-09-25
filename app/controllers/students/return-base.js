@@ -2,7 +2,10 @@ import Ember from 'ember';
 import Isbn from 'obsidian-web/controllers/students/lend-base';
 
 export default Ember.Controller.extend({
-	isbns: Ember.A([Isbn.create(), Isbn.create()]),
+	init() {
+		this._super(arguments);
+		this.isbns = Ember.A([Isbn.create(), Isbn.create()]);
+	},
 	actions: {
 		load(isbn) {
 			let text = isbn.get('text');
@@ -25,7 +28,6 @@ export default Ember.Controller.extend({
 				});
 			}
 		}, save() {
-			let errors = Ember.A([]);
 			this.get('isbns').forEach((isbn) => {
 				if (isbn.get('book')) {
 					this.store.queryRecord('baseSet', {
@@ -36,28 +38,24 @@ export default Ember.Controller.extend({
 					}).then((baseSet) => {
 						if (baseSet.get('length') > 0) {
 							baseSet.get('0').destroyRecord().catch((reason) => {
-								errors.pushObject(reason);
+								this.get('flashMessages').danger(reason);
 							});
 						} else if (baseSet.get('length') === 0) {
-							errors.pushObject(isbn.get('book.title') + ' war gar nicht ausgeliehen');
+							this.get('flasMessages').info(isbn.get('book.title') + ' war gar nicht ausgeliehen');
 						}
 					}).catch((reason) => {
-						errors.pushObject(reason);
+						this.get('flashMessages').info(reason);
 					});
 				}
 			});
-			if (errors.get('length') === 0) {
-				this.get('isbns').clear();
-				this.get('isbns').pushObjects([Isbn.create(), Isbn.create()]);
-				this.transitionToRoute('students.index', {
-					queryParams: {
-						klass: this.get('model.klass'),
-						view: 'list'
-					}
-				});
-			} else {
-				this.set('errors', errors);
-			}
+			this.get('isbns').clear();
+			this.get('isbns').pushObjects([Isbn.create(), Isbn.create()]);
+			this.transitionToRoute('students.index', {
+				queryParams: {
+					klass: this.get('model.klass'),
+					view: 'list'
+				}
+			});
 		}
 	}
 });

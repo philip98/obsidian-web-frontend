@@ -1,9 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	title: '',
-	isbn: '',
-	form: '',
+	init() {
+		this._super(arguments);
+		this.title = '';
+		this.isbn = '';
+		this.form = '';
+	},
 	isbnValid: Ember.computed.match('isbn', /^\d{13}$/),
 	formValid: Ember.computed.match('form', /^(\d+\s*)+$/),
 	valid: Ember.computed.and('isbnValid', 'formValid'),
@@ -19,10 +22,10 @@ export default Ember.Controller.extend({
 					this.set('title', '');
 					this.set('isbn', '');
 					this.set('form', '');
-					this.set('errorMessage', '');
+					this.get('flashMessage').success('Buch erfolgreich erstellt');
 					return this.transitionToRoute('books.index');
 				}, (reason) => {
-					this.set('errorMessage', String(reason));
+					this.get('flashMessage').danger(reason);
 				});
 			}
 		}

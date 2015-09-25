@@ -1,10 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	query: '',
+	init() {
+		this._super(arguments);
+		this.query = '';
+		this.editClass = '';
+		this.klass = '';
+
+	},
 	queryParams: ['klass'],
-	editClass: '',
-	klass: '',
 	filteredData: Ember.computed('model', 'klass', function() {
 		if (this.get('klass')) {
 			return this.get('model').filterBy('klass', this.get('klass'));
@@ -29,7 +33,9 @@ export default Ember.Controller.extend({
 			this.get('checkedStudents').forEach((st) => {
 				st.set('klass', this.get('editClass'));
 				st.set('checked', false);
-				st.save();
+				st.save().catch((reason) => {
+					this.get('flashMessages').danger(reason);
+				});
 			});
 			this.get('model').update();
 		},
