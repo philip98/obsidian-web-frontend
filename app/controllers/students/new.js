@@ -6,7 +6,6 @@ export default Ember.Controller.extend({
 		this.name = '';
 		this.gradYear = '';
 		this.classLetter = '';
-		this.
 	},
 	gradYearValid: Ember.computed.gte('gradYear', 2000),
 	classLetterValid: Ember.computed.lte('classLetter.length', 1),

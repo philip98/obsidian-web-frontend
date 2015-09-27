@@ -6,7 +6,7 @@
 	<div class="medium-10 medium-offset-1 columns">
 		<div class="row">
 			{{#isbn-list data=isbns as |i|}}
-				{{isbn-entry isbn=l action=(action 'load')}}
+				{{isbn-entry isbn=i action=(action 'load')}}
 			{{/isbn-list}}
 		</div>
 		<div class="row">
