@@ -5,10 +5,10 @@ export default Ember.Controller.extend({
 		this._super(arguments);
 		this.query = '';
 		this.editClass = '';
-		this.klass = '';
 
 	},
 	queryParams: ['klass'],
+	klass: '',
 	filteredData: Ember.computed('model', 'klass', function() {
 		if (this.get('klass')) {
 			return this.get('model').filterBy('klass', this.get('klass'));
