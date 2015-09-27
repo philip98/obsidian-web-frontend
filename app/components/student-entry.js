@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	init() {
-		this._super(arguments);
+		this._super(...arguments);
 		this.klass = '';
 		this.isEditing = false;
 	},

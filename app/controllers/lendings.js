@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export let Isbn = Ember.Object.extend({
 	init() {
-		this._super(arguments);
+		this._super(...arguments);
 		this.book = null;
 		this.text = '';
 		this.error = false;

@@ -1,7 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	query: '',
+	init() {
+		this._super(...arguments);
+		this.query = '';
+	},
 	searchedData: Ember.computed('model', 'query', function() {
 		if (this.get('query')) {
 			return this.get('model').filter((item) => {
