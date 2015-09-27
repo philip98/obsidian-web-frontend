@@ -24,7 +24,7 @@ export default Ember.Component.extend({
 		saveChanges() {
 			this.set('student.klass', this.get('klass'));
 			this.get('student').save().catch((reason) => {
-				this.get(flashMessages).danger(reason);
+				this.get('flashMessages').danger(reason);
 			});
 			this.set('isEditing', false);
 			this.sendAction();
