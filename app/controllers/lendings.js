@@ -3,7 +3,7 @@ import Ember from 'ember';
 export let Isbn = Ember.Object.extend({
 	init() {
 		this._super(arguments);
-		this.book = {};
+		this.book = null;
 		this.text = '';
 		this.error = false;
 	}
@@ -14,7 +14,6 @@ export default Ember.Controller.extend({
 		this._super(arguments);
 		this.isbns = Ember.A([Isbn.create(), Isbn.create()]);
 	},
-	processIsbn: function(isbn} {},
 	actions: {
 		load(isbn) {
 			let text = isbn.get('text');
@@ -39,9 +38,10 @@ export default Ember.Controller.extend({
 			});
 		},
 		save() {
-			this.get('isbns').forEach(this.get('processIsbn'));
+			this.get('isbns').forEach(this.processIsbn, this);
 			this.get('isbns').clear();
 			this.get('isbns').pushObject([Isbn.create(), Isbn.create()]);
-			this.send('redirect');
+			this.redirect();
 		}
+	}
 });
