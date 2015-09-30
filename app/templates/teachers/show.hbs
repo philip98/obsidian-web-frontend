@@ -1,0 +1,18 @@
+<div class="row">
+	<h1>{{model.name}}</h1>
+</div>
+
+<div class="row">
+	<div class="medium-6 medium-offset-3 columns">
+		<h3>Ausleihen</h3>
+		{{#link-to 'lendings.lend' 'teacher' model.id class='button tiny success radius'}}
+			<i class="fi-plus"></i>
+		{{/link-to}}
+		{{#link-to 'lendings.return' 'teacher' model.id class='button tiny alert radius'}}
+			<i class="fi-minus"></i>
+		{{/link-to}}
+		{{#lendings-list data=model.lendings as |l|}}
+			{{lendings-entry lending=l}}
+		{{/lendings-list}}
+	</div>
+</div>

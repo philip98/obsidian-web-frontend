@@ -1,0 +1,11 @@
+<thead>
+	<th>Name</th>
+	<th width="125">Aktionen</th>
+</thead>
+<tbody>
+{{#each data as |d|}}
+	{{yield d}}
+{{else}}
+	<tr><td colspan="2"><em>Keine Lehrer vorhanden</em></td></tr>
+{{/each}}
+</tbody>

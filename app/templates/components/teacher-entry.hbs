@@ -1,0 +1,21 @@
+{{#unless isEditing}}
+<td>{{link-to teacher.name 'teachers.show' teacher}}</td>
+<td>
+	<button class="button tiny secondary radius no-margin" {{action 'edit'}}>
+		<i class="fi-pencil"></i>
+	</button>
+	<button class="button tiny alert radius no-margin" {{action 'destroy'}}>
+		<i class="fi-x"></i>
+	</button>
+</td>
+{{else}}
+<td>
+	{{input type='text' class=(if teacher.name 'radius no-margin' 'radius no-margin error') value=teacher.name}}
+</td>
+<td>
+	<button class={{if teacher.name 'button tiny success radius no-margin' 'button tiny disabled radius
+		no-margin'}} {{action 'saveChanges'}}>
+		<i class="fi-check"></i>
+	</button>
+</td>
+{{/unless}}

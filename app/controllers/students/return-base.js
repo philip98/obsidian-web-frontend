@@ -9,7 +9,7 @@ export default LendingsController.extend({
 				if (filteredBaseSets.get('length') === 0) {
 					this.get('flashMessages').warning(isbn.get('book.title') + ' war gar nicht ausgeliehen');
 				} else {
-					filteredBaseSets.get('firstItem').destroyRecord().catch((reason) => {
+					filteredBaseSets.get('firstObject').destroyRecord().catch((reason) => {
 						this.get('flashMessages').warning(reason);
 					});
 				}

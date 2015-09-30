@@ -1,0 +1,21 @@
+<div class="row">
+	<h1>Neuer Lehrer</h1>
+</div>
+
+<div class="row">
+	<div class="medium-6 medium-offset-3 columns">
+		<div class="panel radius">
+			<form {{action 'create' on='submit'}}>
+				<div class="row">
+					{{input type='text' placeholder='Name' value=name class=(if name 'radius' 'radius error')}}
+				</div>
+				<div class="row">
+					{{input type='submit' value='Erstellen' class=(if name 'button radius' 'button disabled radius')}}
+					{{#unless name}}
+					<small class="error">Unvollst&auml;ndige Angaben</small>
+					{{/unless}}
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

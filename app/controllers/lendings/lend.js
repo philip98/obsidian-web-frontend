@@ -12,6 +12,6 @@ export default LendingsController.extend({
 			});
 		}
 	}, redirect() {
-		this.transitionToRoute('students.show', this.get('model'));
+		this.transitionToRoute(this.get('model.constructor.modelName') + 's.show', this.get('model'));
 	}
 });
