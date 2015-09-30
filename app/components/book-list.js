@@ -1,5 +1,3 @@
-import Ember from 'ember';
+import AbstractList from 'obsidian-web/components/abstract-list';
 
-export default Ember.Component.extend({
-	tagName: 'table'
-});
+export default AbstractList.extend();
