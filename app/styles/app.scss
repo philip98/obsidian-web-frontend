@@ -2,6 +2,14 @@
 @import 'bower_components/foundation/scss/foundation';
 @import 'bower_components/foundation-icon-fonts/_foundation-icons';
 
+@mixin rotate($angle) {
+	-moz-transform: rotate($angle);
+	-o-transform: rotate($angle);
+	-ms-transform: rotate($angle);
+	-webkit-transform: rotate($angle);
+	transform: rotate($angle);
+}
+
 .no-margin {
 	margin: 0 !important;
 }
@@ -25,7 +33,7 @@ input[type="submit"] {
 	margin-bottom: 0;
 }
 
-.button.disabled {
+.disabled {
 	pointer-events: none;
 }
 
@@ -48,5 +56,28 @@ select.class-list {
 .reveal-modal {
 	.button {
 		width: 100%;
+	}
+}
+
+.table-header-rotated {
+	border-collapse: collapse;
+	td {
+		border-right: 1px solid #ccc;
+		padding-left: 7px;
+		padding-right: 7px;
+	}
+	th.rotate {
+		vertical-align: bottom;
+		padding-bottom: 20px;
+		height: 250px;
+		white-space: nowrap;
+		> div {
+    		@include rotate(315deg);
+			width: 30px;
+		}
+		> div > span {
+			border-bottom: 1px solid #ccc;
+			padding: 5px 10px;
+		}
 	}
 }

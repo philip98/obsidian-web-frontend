@@ -13,6 +13,18 @@
 			{{#x-option value=k}}{{k}}{{/x-option}}
 			{{/each}}
 		{{/x-select}}
+		{{#if klass}}
+		{{#x-select value=style class='class-list radius'}}
+			{{#x-option value='table'}}Tabelle{{/x-option}}
+			{{#x-option value='list'}}Liste{{/x-option}}
+		{{/x-select}}
+		{{/if}}
+		{{#unless isTable}}
+		{{#x-select value=list class='class-list radius'}}
+			{{#x-option value='old'}}Alte Liste{{/x-option}}
+			{{#x-option value='new'}}Neue Liste{{/x-option}}
+		{{/x-select}}
+		{{/unless}}
 	</div>
 	<div class="medium-2 columns">
 		{{input type='text' class='search-field radius' value=query placeholder='Suchen'}}
@@ -21,9 +33,15 @@
 
 <div class="row">
 	<div class="medium-12 columns">
+		{{#if isTable}}
 		{{#student-list data=searchedData as |s|}}
 			{{student-entry student=s action=(action 'reload')}}
 		{{/student-list}}
+		{{else}}
+		{{#student-table students=searchedData books=usedBooks as |l|}}
+			{{input type='checkbox' class='radius disabled no-margin' checked=l}}
+		{{/student-table}}
+		{{/if}}
 	</div>
 </div>
 

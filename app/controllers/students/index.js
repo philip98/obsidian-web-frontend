@@ -7,13 +7,23 @@ export default Ember.Controller.extend({
 		this.editClass = '';
 
 	},
-	queryParams: ['klass'],
+	queryParams: ['klass', 'style'],
 	klass: '',
-	filteredData: Ember.computed('model', 'klass', function() {
+	style: 'table',
+	isTable: Ember.computed.equal('style', 'table'),
+	form: Ember.computed('klass', function() {
+		return Number(this.get('klass').split(/^(\d+)$/)[1]);
+	}),
+	usedBooks: Ember.computed('model.books', 'form', function() {
+		return this.get('model.books').filter((item) => {
+			return item.get('form').indexOf(this.get('form')) > -1;
+		});
+	}),
+	filteredData: Ember.computed('model.students', 'klass', function() {
 		if (this.get('klass')) {
-			return this.get('model').filterBy('klass', this.get('klass'));
+			return this.get('model.students').filterBy('klass', this.get('klass'));
 		} else {
-			return this.get('model');
+			return this.get('model.students');
 		}
 	}),
 	searchedData: Ember.computed('filteredData', 'query', function() {
@@ -26,7 +36,7 @@ export default Ember.Controller.extend({
 		}
 	}),
 	checkedStudents: Ember.computed.filterBy('searchedData', 'checked', true),
-	klassesNonDistinct: Ember.computed.mapBy('model', 'klass'),
+	klassesNonDistinct: Ember.computed.mapBy('model.students', 'klass'),
 	klasses: Ember.computed.uniq('klassesNonDistinct'),
 	actions: {
 		massEdit() {
@@ -37,10 +47,10 @@ export default Ember.Controller.extend({
 					this.get('flashMessages').danger(reason);
 				});
 			});
-			this.get('model').update();
+			this.get('model.students').update();
 		},
 		reload() {
-			this.get('model').update();
+			this.get('model.students').update();
 		}
 	}
 });

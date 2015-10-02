@@ -1,0 +1,31 @@
+<thead>
+	<tr>
+		<th width="120"></th>
+		<th width="350"></th>
+		{{#each books as |b|}}
+		<th class="rotate">
+			<div>
+				<span>{{b.title}}</span>
+			</div>
+		</th>
+		{{/each}}
+	</tr>
+</thead>
+<tbody>
+	{{#each studentsExtended as |st|}}
+	<tr>
+		<td>
+			{{#link-to 'students.lend-base' st.student.id class='button tiny radius no-margin'}}
+				<i class="fi-plus"></i>
+			{{/link-to}}
+			{{#link-to 'students.return-base' st.student.id class='button tiny radius no-margin'}}
+				<i class="fi-minus"></i>
+			{{/link-to}}
+		</td>
+		<td>{{link-to st.student.name 'students.show' st.student.id}}</td>
+		{{#each st.baseSets as |bs|}}
+		<td>{{yield bs}}</td>
+		{{/each}}
+	</tr>
+	{{/each}}
+</tbody>

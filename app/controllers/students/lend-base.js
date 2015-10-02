@@ -15,7 +15,7 @@ export default LendingsController.extend({
 		this.transitionToRoute('students.index', {
 			queryParams: {
 				klass: this.get('model.klass'),
-				view: 'list'
+				style: 'list'
 			}
 		});
 	}
