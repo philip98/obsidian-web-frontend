@@ -7,9 +7,12 @@
 		{{#link-to 'students.new' class="button tiny success radius"}}
 			<i class="fi-plus"></i>
 		{{/link-to}}
-		{{#class-list data=klasses action=(action 'changeClass') as |k|}}
-			{{class-entry value=k currentClass=klass}}
-		{{/class-list}}
+		{{#x-select value=klass class='class-list radius'}}
+			{{#x-option value=''}}Keine Klasse{{/x-option}}
+			{{#each klasses as |k|}}
+			{{#x-option value=k}}{{k}}{{/x-option}}
+			{{/each}}
+		{{/x-select}}
 	</div>
 	<div class="medium-2 columns">
 		{{input type='text' class='search-field radius' value=query placeholder='Suchen'}}

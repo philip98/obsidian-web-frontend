@@ -41,9 +41,6 @@ export default Ember.Controller.extend({
 		},
 		reload() {
 			this.get('model').update();
-		},
-		changeClass(value) {
-			this.set('klass', value);
 		}
 	}
 });
