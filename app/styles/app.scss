@@ -81,3 +81,13 @@ select.class-list {
 		}
 	}
 }
+
+.footer {
+	font-size: 0.8$base-font-size;
+	color: $aluminum;
+	a {
+		color: $base;
+		text-decoration: none;
+	}
+	margin-bottom: 1cm;
+}

@@ -28,4 +28,16 @@
 {{flash-message flash=flash messageStyle='foundation' class='radius'}}
 {{/each}}
 {{outlet}}
+<footer class="footer">
+	<hr/>
+	<div class="row">
+		<div class="left">
+			&copy; 2015 Philip Schlösser (philipschloesser@gmx.net)
+		</div>
+		<div class="right">
+			{{link-to 'Commits' 'commits'}} &middot;
+			{{link-to 'Über' 'about'}}
+		</div>
+	</div>
+</footer>
 {{/app-canvas}}
