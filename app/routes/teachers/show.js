@@ -7,6 +7,6 @@ export default Ember.Route.extend({
 				this.get('flashMessages').warning('Sie müssen sich zuerst einloggen');
 				return this.transitionTo('login');
 			}
-		})
+		});
 	}
 });

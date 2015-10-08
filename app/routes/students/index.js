@@ -14,5 +14,9 @@ export default Ember.Route.extend({
 				}
 			}), books: this.store.findAll('book')
 		});
+	}, actions: {
+		activate() {
+			this.refresh();
+		}
 	}
 });
