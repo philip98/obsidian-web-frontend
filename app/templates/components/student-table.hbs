@@ -1,7 +1,7 @@
 <thead>
 	<tr>
 		<th width="120"></th>
-		<th width="350"></th>
+		<th></th>
 		{{#each books as |b|}}
 		<th class="rotate">
 			<div>
@@ -14,7 +14,7 @@
 <tbody>
 	{{#each studentsExtended as |st|}}
 	<tr>
-		<td>
+		<td class="text-center">
 			{{#link-to 'students.lend-base' st.student.id class='button tiny radius no-margin'}}
 				<i class="fi-plus"></i>
 			{{/link-to}}
@@ -24,7 +24,7 @@
 		</td>
 		<td>{{link-to st.student.name 'students.show' st.student.id}}</td>
 		{{#each st.baseSets as |bs|}}
-		<td>{{yield bs}}</td>
+		<td class="text-center">{{yield bs}}</td>
 		{{/each}}
 	</tr>
 	{{/each}}

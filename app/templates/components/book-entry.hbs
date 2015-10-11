@@ -2,7 +2,7 @@
 <td>{{link-to book.title 'books.show' book}}</td>
 <td>{{book.isbn}}</td>
 <td>{{book.form}}</td>
-<td>
+<td class="text-center">
 	<button class="button tiny secondary radius no-margin" {{action 'edit'}}>
 		<i class="fi-pencil"></i>
 	</button>
@@ -20,7 +20,7 @@
 <td>
 	{{input type='text' class=(if formValid 'radius no-margin' 'radius no-margin error') value=book.form}}
 </td>
-<td>
+<td class="text-center">
 	<button class={{if valid 'button tiny success radius no-margin' 'button tiny disabled radius no-margin'}}
 		{{action 'saveChanges'}}>
 		<i class="fi-check"></i>

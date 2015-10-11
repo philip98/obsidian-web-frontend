@@ -2,7 +2,7 @@
 <td>{{input type='checkbox' checked=student.checked class='no-margin'}}</td>
 <td>{{link-to student.name 'students.show' student}}</td>
 <td class="student-class">{{student.klass}}</td>
-<td>
+<td class="text-center">
 	<button {{action 'edit'}} class="button tiny secondary radius no-margin">
 		<i class="fi-pencil"></i>
 	</button>
@@ -14,7 +14,7 @@
 <td></td>
 <td>{{input type='text' value=student.name class='radius no-margin'}}</td>
 <td>{{input type='text' value=student.klass class='radius no-margin'}}</td>
-<td>
+<td class="text-center">
 	<button {{action 'saveChanges'}} class="button tiny success radius no-margin">
 		<i class="fi-check"></i>
 	</button>

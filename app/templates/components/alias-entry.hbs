@@ -1,6 +1,6 @@
 {{#unless isEditing}}
 <td>{{alias.name}}</td>
-<td>
+<td class="text-center">
 	<button class="button tiny secondary radius no-margin" {{action 'edit'}}>
 		<i class="fi-pencil"></i>
 	</button>
@@ -10,7 +10,7 @@
 </td>
 {{else}}
 <td>{{input type='text' class=(if alias.name 'radius no-margin' 'radius error no-margin') placeholder='Name' value=alias.name}}</td>
-<td>
+<td class="text-center">
 	<button class="button tiny success radius no-margin" {{action 'saveChanges'}}>
 		<i class="fi-check"></i>
 	</button>
