@@ -5,9 +5,9 @@
 <div class="row">
 	<div class="medium-6 medium-offset-3 columns">
 		<h3>Aliasse:</h3>
-		<a href='' class="button tiny success radius" data-reveal-id="addAlias">
+		<button class="button tiny success radius" {{action 'add'}}>
 			<i class="fi-plus"></i>
-		</a>
+		</button>
 	</div>
 </div>
 
@@ -26,7 +26,8 @@
 	{{flash-message flash=flash messageStyle='foundation' class='radius'}}
 	{{/each}}
 	<p>
-			{{input type='text' value=(mut name) placeholder='Name' class=(if name 'radius' 'radius error')}}
+			{{input type='text' value=(mut name) placeholder='Name'
+				class=(if name 'radius' 'radius error') autofocus=true}}
 	</p>
 	<p>
 		<button class={{if name 'button success radius' 'button disabled radius'}} {{action 'save'}}>OK</button>

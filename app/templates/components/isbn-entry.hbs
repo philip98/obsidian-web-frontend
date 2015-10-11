@@ -1,6 +1,7 @@
 <div class="row collapse postfix-radius">
 	<div class="small-6 columns">
-		{{input type='text' class=(if isbn.error 'radius error' 'radius') value=isbn.text focus-out='inputBlur'}}
+		{{input type='text' class=(if isbn.error 'radius error' 'radius') value=isbn.text
+			focus-out='inputBlur' autofocus=autofocus}}
 	</div>
 	<div class="small-6 columns">
 		<span class={{if isbn.error 'postfix error' 'postfix'}}>

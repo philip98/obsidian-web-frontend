@@ -5,8 +5,8 @@
 <div class="row">
 	<div class="medium-10 medium-offset-1 columns">
 		<div class="row">
-			{{#isbn-list data=isbns as |i|}}
-				{{isbn-entry isbn=i action=(action 'load')}}
+			{{#isbn-list data=isbns as |isbn index|}}
+				{{isbn-entry isbn=isbn index=index action=(action 'load')}}
 			{{/isbn-list}}
 		</div>
 		<div class="row">

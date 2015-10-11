@@ -7,7 +7,7 @@
 		<div class="panel radius">
 			<form {{action 'create' on='submit'}}>
 				<div class="row">
-					{{input type='text' placeholder='Name' value=name class='radius'}}
+					{{input type='text' placeholder='Name' value=name class='radius' autofocus=true}}
 				</div>
 				<div class="row">
 					{{input type='text' placeholder='Abschlussjahr' value=gradYear class=(if gradYearValid 'radius' 'radius error')}}

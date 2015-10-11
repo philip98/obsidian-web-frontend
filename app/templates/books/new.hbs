@@ -7,7 +7,7 @@
 		<div class="panel radius">
 			<form {{action 'create' on='submit'}}>
 				<div class="row">
-					{{input type='text' placeholder='Titel' value=title class='radius'}}
+					{{input type='text' placeholder='Titel' value=title class='radius' autofocus=true}}
 				</div>
 				<div class="row">
 					{{input type='text' placeholder='ISBN' value=isbn class=(if isbnValid 'radius' 'radius error')}}

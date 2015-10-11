@@ -6,7 +6,7 @@
 		<div class="panel radius">
 			<form {{action 'login' on='submit'}}>
 				<div class="row">
-					{{input type='text' value=name placeholder='Name der Schule' class='radius'}}
+					{{input type='text' value=name placeholder='Name der Schule' class='radius' autofocus=true}}
 				</div>
 				<div class="row">
 					{{input type='password' value=password placeholder='Passwort' class=(if invalidPassword 'radius error' 'radius')}}

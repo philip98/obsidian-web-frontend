@@ -1,6 +1,6 @@
 <form {{action 'register' on='submit'}}>
 	<div class="row">
-		{{input type='text' value=name placeholder='Name der Schule' class=(if name 'radius' 'radius error')}}
+		{{input type='text' value=name placeholder='Name der Schule' class=(if name 'radius' 'radius error') autofocus=true}}
 		{{#unless name}}
 		<small class="error">Name fehlt</small>
 		{{/unless}}

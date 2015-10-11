@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	init() {
+		this._super(...arguments);
+		this.name = '';
+	},
 	actions: {
 		save() {
 			if (this.get('name')) {
@@ -8,8 +12,9 @@ export default Ember.Controller.extend({
 					book: this.get('model'),
 					name: this.get('name')
 				});
+				this.set('name', '');
 				r.save().then(() => {
-					$('#addAlias').foundation('reveal', 'close');
+					Ember.$('#addAlias').foundation('reveal', 'close');
 					this.get('model.aliases').reload();
 				}).catch((reason) => {
 					this.get('flashMessages').danger(reason);
@@ -18,6 +23,9 @@ export default Ember.Controller.extend({
 		},
 		reload() {
 			this.get('model.aliases').reload();
+		},
+		add() {
+			Ember.$('#addAlias').foundation('reveal', 'open');
 		}
 	}
 });
