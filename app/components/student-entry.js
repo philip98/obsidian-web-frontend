@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	init() {
 		this._super(...arguments);
-		this.klass = '';
 		this.isEditing = false;
 	},
 	tagName: 'tr',
@@ -19,10 +18,8 @@ export default Ember.Component.extend({
 		},
 		edit() {
 			this.set('isEditing', true);
-			this.set('klass', this.get('student.klass'));
 		},
 		saveChanges() {
-			this.set('student.klass', this.get('klass'));
 			this.get('student').save().catch((reason) => {
 				this.get('flashMessages').danger(reason);
 			});
