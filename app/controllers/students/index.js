@@ -7,16 +7,34 @@ export default Ember.Controller.extend({
 		this.editClass = '';
 
 	},
-	queryParams: ['klass', 'style'],
+	queryParams: ['klass', 'style', 'list'],
 	klass: '',
 	style: 'table',
-	isTable: Ember.computed.equal('style', 'table'),
+	list: 'old',
+	isTable: Ember.computed('style', 'klass', function() {
+		return (this.get('klass') === '') || (this.get('style') === 'table');
+	}),
 	form: Ember.computed('klass', function() {
 		return Number(this.get('klass').split(/^(\d+)$/)[1]);
 	}),
-	usedBooks: Ember.computed('model.books', 'form', function() {
+	displayedForm: Ember.computed('form', 'list', function() {
+		if ((new Date()).getMonth() < 8) {
+			if (this.get('list') === 'old') {
+				return String(this.get('form'));
+			} else {
+				return String(this.get('form') + 1);
+			}
+		} else {
+			if (this.get('list') === 'old') {
+				return String(this.get('form') - 1);
+			} else {
+				return String(this.get('form'));
+			}
+		}
+	}),
+	usedBooks: Ember.computed('model.books', 'displayedForm', function() {
 		return this.get('model.books').filter((item) => {
-			return item.get('form').indexOf(this.get('form')) > -1;
+			return item.get('form').indexOf(this.get('displayedForm')) > -1;
 		});
 	}),
 	filteredData: Ember.computed('model.students', 'klass', function() {
