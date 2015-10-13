@@ -35,7 +35,7 @@ export default Ember.Service.extend({
 	authenticate(name, password) {
 		return Ember.$.ajax({
 			type: 'POST',
-			url: ENV.data_host + '/schools/sign_in', 
+			url: ENV.data_host + '/schools/sign_in',
 			dataType: 'json',
 			accepts: {
 				json: 'application/json'
@@ -49,8 +49,6 @@ export default Ember.Service.extend({
 			this.setData(response.school_id, response.token, response.secret_id);
 			this.toggleProperty('changed');
 			return true;
-		}, () => {
-			throw new Error('Falsches Passwort');
 		});
 	},
 	invalidate() {
@@ -68,9 +66,10 @@ export default Ember.Service.extend({
 	init() {
 		Ember.$.ajaxPrefilter((options, originalOptions, jqXHR) => {
 			if (this.isAuthenticated && options.url.indexOf(ENV.data_host) > -1) {
-				jqXHR.setRequestHeader('Authorization', 'Token token="' + this.get('secretToken') + 
+				jqXHR.setRequestHeader('Authorization', 'Token token="' + this.get('secretToken') +
 					'", secret_id="' + this.get('secretId') + '"');
 			}
 		});
+		Ember.$.get(ENV.data_host + '/schools');
 	}
 });
