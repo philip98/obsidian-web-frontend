@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import LendingsController from 'obsidian-web/controllers/lendings';
 
 export default LendingsController.extend({

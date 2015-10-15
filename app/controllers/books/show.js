@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
 					this.get('model.aliases').reload();
 				}).catch((reason) => {
 					this.get('flashMessages').danger(reason);
-				})
+				});
 			}
 		},
 		reload() {

@@ -25,6 +25,7 @@ Router.map(function() {
   this.route('lendings.return', {path: '/:person_type/:person_id/return'});
   this.route('login');
   this.route('register');
+  this.route('settings');
   this.route('commits');
   this.route('about');
 });

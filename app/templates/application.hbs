@@ -14,8 +14,8 @@
 					{{#active-link}}{{link-to 'Lehrer' 'teachers.index'}}{{/active-link}}
 					{{#active-link}}{{link-to 'Bücher' 'books.index'}}{{/active-link}}
 				</ul>
-			</li>{{!--
-			{{#active-link}}{{link-to 'Einstellungen' 'settings'}}{{/active-link}}--}}
+			</li>
+			{{#active-link}}{{link-to 'Einstellungen' 'settings'}}{{/active-link}}
 			<li><a {{action 'invalidateSession'}}>Logout</a></li>
 			{{else}}
 			{{#active-link}}{{link-to 'Registrieren' 'register'}}{{/active-link}}

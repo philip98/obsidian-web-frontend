@@ -1,0 +1,30 @@
+<div class="row">
+    <h1>Einstellungen</h1>
+</div>
+
+<div class="row">
+    <div class="medium-6 medium-offset-3 columns">
+        <div class="panel radius">
+            <form {{action 'submit' on='submit'}}>
+                <div class="row">
+                    {{input type='text' placeholder='Passwort' class='radius'
+                        autofocus=true value=password}}<br/>
+                    {{input type='text' placeholder='Passwort bestätigen' value=confirmPassword
+                        class=(if passwordsMatch 'radius' 'radius error')}}
+                    {{#unless passwordsMatch}}
+                    <small class="error">
+                        Passw&ouml;rter stimmen nicht &uuml;berein
+                    </small><br/>
+                    {{/unless}}
+                    {{input type='submit' value='Passwort ändern' class=(if passwordsMatch
+                        'button radius' 'button disabled radius')}}
+                </div>
+                <div class="row">
+                    <button class="button alert radius form-button" {{action 'delete'}}>
+                        Schule l&ouml;schen
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
