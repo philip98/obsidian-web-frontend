@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 	}, model() {
 		return Ember.RSVP.hash({
 			students: this.store.findAll('student', {include: 'baseSets'}).catch(() => {
-				if (!this.controllerFor('students.index').get('auth.isAuthenticated')) {
+				if (!this.get('auth.isAuthenticated')) {
 					this.get('flashMessages').warning('Sie müssen sich zuerst einloggen');
 					return this.transitionTo('login');
 				}
