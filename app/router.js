@@ -20,7 +20,6 @@ Router.map(function() {
     this.route('new');
     this.route('show', {path: '/:id'});
   });
-  this.route('teachers')
   this.route('lendings.lend', {path: '/:person_type/:person_id/lend'});
   this.route('lendings.return', {path: '/:person_type/:person_id/return'});
   this.route('login');

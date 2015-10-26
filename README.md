@@ -1,3 +1,4 @@
+[ ![Codeship Status for philip98/obsidian-web-frontend](https://codeship.com/projects/cbb958e0-5bb5-0133-4261-42612c8c8541/status?branch=master)](https://codeship.com/projects/110793)
 # Obsidian-Web
 
 Obsidian-Web(-Frontend) ist ein Bücherverwaltungssystem für
