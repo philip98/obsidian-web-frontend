@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "foundation": "~5.5.2",
-    "foundation-icon-fonts": "*"
+    "foundation-icon-fonts": "*",
+    "papaparse": "~4.1.2"
   }
 }
