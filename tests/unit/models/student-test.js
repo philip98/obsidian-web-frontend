@@ -10,3 +10,13 @@ test('it exists', function(assert) {
   // var store = this.store();
   assert.ok(!!model);
 });
+
+test('klass is calculated correctly', function(assert) {
+    let st = this.subject({name: 'abc', graduationYear: 2018, classLetter: 'c'}),
+        now = new Date();
+    if (now.getMonth() >= 8) {
+        assert.equal(st.get('klass'), String(now.getFullYear() - 2018 + 13) + 'c');
+    } else {
+        assert.equal(st.get('klass'), String(now.getFullYear() - 2018 + 12) + 'c');
+    }
+});
