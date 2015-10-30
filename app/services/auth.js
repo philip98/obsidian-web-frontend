@@ -56,8 +56,7 @@ export default Ember.Service.extend({
 			type: 'DELETE',
 			url: ENV.data_host + '/schools/sign_out'
 		}).then(() => {
-			this.setData('', '', '');
-			this.toggleProperty('changed');
+			this.destroySession();
 			return true;
 		}, () => {
 			throw new Error('Ein Fehler beim Ausloggen ist aufgetreten');
@@ -71,5 +70,9 @@ export default Ember.Service.extend({
 			}
 		});
 		Ember.$.get(ENV.data_host + '/schools');
+	},
+	destroySession() {
+		this.setData('', '', '');
+		this.toggleProperty('changed');
 	}
 });

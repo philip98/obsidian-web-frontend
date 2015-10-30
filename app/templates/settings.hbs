@@ -7,9 +7,9 @@
         <div class="panel radius">
             <form {{action 'submit' on='submit'}}>
                 <div class="row">
-                    {{input type='text' placeholder='Passwort' class='radius'
+                    {{input type='password' placeholder='Passwort' class='radius'
                         autofocus=true value=password}}<br/>
-                    {{input type='text' placeholder='Passwort bestätigen' value=confirmPassword
+                    {{input type='password' placeholder='Passwort bestätigen' value=confirmPassword
                         class=(if passwordsMatch 'radius' 'radius error')}}
                     {{#unless passwordsMatch}}
                     <small class="error">
