@@ -1,0 +1,14 @@
+<a class="close-reveal-modal">&#215;</a>
+<h2 id="importStudentsTitle">Sch&uuml;ler importieren</h2>
+<p>
+    {{text-file-upload multiple=multiple files=files class='radius'}}
+    {{input type='text' placeholder='Reihenfolge der Felder' value=header class='radius'}}
+    {{input type='text' placeholder='Klasse' class='radius' value=klass}}
+    {{import-preview files=files header=header}}
+</p>
+<p>
+    <button class={{if fileSelected 'button success radius' 'button disabled radius'}}
+        {{action 'importFiles'}}>
+        Importieren
+    </button>
+</p>
