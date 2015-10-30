@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
 				this.set('name', '');
 				this.set('invalidSchool', false);
 				this.get('flashMessages').success('Schule erfolgreich erstellt');
-				this.transitionTo('index');
+				this.transitionToRoute('index');
 			}, (reason) => {
 				this.set('password', '');
 				this.set('name', '');
