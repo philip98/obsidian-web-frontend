@@ -1,6 +1,11 @@
 {
-  "name": "obsidian-web",
-  "root": "dist",
-  "clean_urls": true,
-  "error_page": "public/error.html"
+    "name": "obsidian-web",
+    "root": "dist",
+    "clean_urls": false,
+    "error_page": "public/error.html",
+    "routes": [
+        {
+            "/**": "index.html"
+        }
+    ]
 }
