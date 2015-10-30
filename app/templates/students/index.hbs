@@ -7,6 +7,9 @@
 		{{#link-to 'students.new' class="button tiny success radius"}}
 			<i class="fi-plus"></i>
 		{{/link-to}}
+		<button class="button tiny success radius" {{action 'importStudents'}}>
+			<i class="fi-page-csv"></i>
+		</button>
 		{{#x-select value=klass class='class-list radius'}}
 			{{#x-option value=''}}Keine Klasse{{/x-option}}
 			{{#each klasses as |k|}}
@@ -63,3 +66,5 @@
 	</div>
 </div>
 {{/if}}
+
+{{import-dialog id='importStudents' klass=klass}}

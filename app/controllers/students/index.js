@@ -5,7 +5,6 @@ export default Ember.Controller.extend({
 		this._super(...arguments);
 		this.query = '';
 		this.editClass = '';
-
 	},
 	queryParams: ['klass', 'style', 'list'],
 	klass: '',
@@ -69,6 +68,9 @@ export default Ember.Controller.extend({
 		},
 		reload() {
 			this.get('model.students').update();
+		},
+		importStudents() {
+			$('#importStudents').foundation('reveal', 'open');
 		}
 	}
 });
