@@ -14,6 +14,13 @@ export default Ember.Component.extend({
     actions: {
         submit() {
 
+        },
+        changeFile(files) {
+            let a = Ember.A();
+            for (let i = 0; i < files.length; ++i) {
+                a.pushObject(files.item(i));
+            }
+            this.set('files', a);
         }
     }
-})
+});
