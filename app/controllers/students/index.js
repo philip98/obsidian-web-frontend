@@ -71,6 +71,15 @@ export default Ember.Controller.extend({
 		},
 		importStudents() {
 			$('#importStudents').foundation('reveal', 'open');
+		},
+		saveStudent(data) {
+			let st = this.store.createRecord('student', {classLetter: ''});
+			for (let key in data) {
+				st.set(key, data[key]);
+			}
+			st.save().catch((reason) => {
+				this.get('flashMessages').danger(reason);
+			});
 		}
 	}
 });
