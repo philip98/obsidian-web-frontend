@@ -7,7 +7,7 @@ function translateHeader(field) {
         case 'abschlussjahr':
             return 'graduationYear';
         case 'klassenbuchstabe':
-            return 'classLetter'
+            return 'classLetter';
         case 'klasse':
             return 'klass';
         default:
@@ -31,7 +31,7 @@ export default Ember.Component.extend({
     }),
     actions: {
         submit() {
-            let _this = this
+            let _this = this;
             Papa.parse(this.get('files.firstObject'), {
                 step(results) {
                     if (results.data[0].length !== _this.get('headers.length')) {
@@ -45,7 +45,10 @@ export default Ember.Component.extend({
                     }
                 }, error(err) {
                     _this.get('flashMessages').danger(err.message);
-                }
+                }, complete() {
+                    $(_this.get('id')).foundation('reveal', 'close');
+                },
+                skipEmptyLines: true
             });
         },
         changeFile(files) {
