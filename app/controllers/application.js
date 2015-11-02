@@ -5,8 +5,8 @@ export default Ember.Controller.extend({
 		invalidateSession() {
 			this.get('auth').invalidate().then(() => {
 				this.transitionToRoute('index');
-			}, () => {
-				throw new Error('Konnte nicht ausgeloggt werden');
+			}, (reason) => {
+				this.get('flashMessages').danger(reason);
 			});
 		}
 	}
