@@ -55,7 +55,9 @@ export default Ember.Controller.extend({
 	}),
 	checkedStudents: Ember.computed.filterBy('searchedData', 'checked', true),
 	klassesNonDistinct: Ember.computed.mapBy('model.students', 'klass'),
-	klasses: Ember.computed.uniq('klassesNonDistinct'),
+	klasses: Ember.computed('model.students.@each.klass', function() {
+		return this.get('model.students').sortBy('klass').mapBy('klass').uniq();
+	}),
 	actions: {
 		massEdit() {
 			this.get('checkedStudents').forEach((st) => {
