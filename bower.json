@@ -11,7 +11,8 @@
     "ember-resolver": "~0.1.18",
     "jquery": "2.1.4",
     "loader.js": "ember-cli/loader.js#3.2.1",
-    "qunit": "~1.18.0"
+    "qunit": "~1.18.0",
+    "file-saver.js": "latest"
   },
   "resolutions": {
     "jquery": ">= 2.1.0",

@@ -20,5 +20,6 @@ module.exports = function(defaults) {
   app.import('bower_components/foundation/js/vendor/modernizr.js');
   app.import('bower_components/foundation/js/foundation.min.js');
   app.import('bower_components/papaparse/papaparse.min.js');
+  app.import('bower_components/file-saver.js/FileSaver.js');
   return app.toTree();
 };
