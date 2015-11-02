@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
 	klass: '',
 	style: 'table',
 	list: 'old',
+	fileSaver: Ember.inject.service('file-saver'),
 	isTable: Ember.computed('style', 'klass', function() {
 		return (this.get('klass') === '') || (this.get('style') === 'table');
 	}),
@@ -80,6 +81,16 @@ export default Ember.Controller.extend({
 			st.save().catch((reason) => {
 				this.get('flashMessages').danger(reason);
 			});
+		},
+		exportLendings() {
+			let text = '';
+			this.get('filteredData').forEach((student) => {
+				text += student.get('name') + ':\n';
+				student.get('baseSets').forEach((baseSet) => {
+					text += '\t' + baseSet.get('book.title') + '\n';
+				});
+			});
+			this.get('fileSaver').save(text, 'text/plain', this.get('klass') + '.txt');
 		}
 	}
 });

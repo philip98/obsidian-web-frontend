@@ -10,6 +10,11 @@
 		<button class="button tiny success radius" {{action 'importStudents'}}>
 			<i class="fi-page-csv"></i>
 		</button>
+		{{#if klass}}
+		<button class="button tiny default radius" {{action 'exportLendings'}}>
+			<i class="fi-page-export-csv"></i>
+		</button>
+		{{/if}}
 		{{#x-select value=klass class='class-list radius'}}
 			{{#x-option value=''}}Keine Klasse{{/x-option}}
 			{{#each klasses as |k|}}
