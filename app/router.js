@@ -27,6 +27,7 @@ Router.map(function() {
   this.route('settings');
   this.route('commits');
   this.route('about');
+  this.route('help');
 });
 
 export default Router;
