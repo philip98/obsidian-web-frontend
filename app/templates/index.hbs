@@ -1,3 +1,28 @@
-<div class="row">
-    {{{model}}}
+{{#if auth.isAuthenticated}}
+<div class="row index">
+    <div class="medium-6 columns">
+        {{link-to 'Schüler' 'students.index' class='button large expand radius'}}
+    </div>
+    <div class="medium-6 columns">
+        {{link-to 'Lehrer' 'teachers.index' class='button large expand radius'}}
+    </div>
 </div>
+<div class="row index">
+    <div class="medium-6 columns">
+        {{link-to 'Bücher' 'books.index' class='button large expand radius'}}
+    </div>
+    <div class="medium-6 columns">
+        {{link-to 'Einstellungen' 'settings' class='button large expand radius'}}
+    </div>
+</div>
+<div class="row index">
+    <div class="medium-8 medium-offset-2 columns">
+        {{link-to 'Hilfe' 'help' class='button large expand radius'}}
+    </div>
+</div>
+{{else}}
+<div class="row panel radius jumbotron">
+<h1>Herzlich Willkommen bei Obsidian-Web</h1>
+<h3>Jetzt {{link-to 'registrieren' 'register'}} oder {{link-to 'einloggen' 'login'}}!</h3>
+</div>
+{{/if}}

@@ -10,6 +10,10 @@
 	transform: rotate($angle);
 }
 
+nav.top-bar {
+	margin-bottom: 20px;
+}
+
 .no-margin {
 	margin: 0 !important;
 }
@@ -107,4 +111,24 @@ button.form-button {
 	width: 100%;
 	margin-top: 16px;
 	margin-bottom: 0;
+}
+
+.jumbotron {
+	margin-top: 50px;
+	margin-bottom: 100px;
+	padding: 40px;
+	h1 {
+		margin: 30px;
+	}
+	h3 {
+		margin: 30px;
+	}
+}
+
+.row.index {
+	a.button {
+		height: 80px;
+		vertical-align: middle;
+		font-size: $h3-font-size;
+	}
 }
