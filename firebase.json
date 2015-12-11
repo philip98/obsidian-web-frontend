@@ -1,0 +1,15 @@
+{
+  "firebase": "obsidian-web",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "rewrites": [
+    {
+      "source": 0,
+      "destination": "/[object Object]"
+    }
+  ]
+}
