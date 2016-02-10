@@ -9,13 +9,13 @@
 		{{/link-to}}
 	</div>
 	<div class="medium-2 columns">
-		{{input type='text' class='search-field radius' value=query placeholder='Suchen' autofocus=true}}
+		{{input type='text' class='search-field radius' value=searchQuery placeholder='Suchen' autofocus=true}}
 	</div>
 </div>
 
 <div class="row">
 	<div class="medium-12 columns">
-		{{#teacher-list data=searchedData as |t|}}
+		{{#teacher-list data=sortedData sorting=sorting action=(action 'changeSorting') as |t|}}
 			{{teacher-entry teacher=t action=(action 'reload')}}
 		{{/teacher-list}}
 	</div>
