@@ -1,7 +1,11 @@
 <thead>
-	<th>Titel</th>
+	<th>Titel
+		{{sorting-buttons sorting=sorting field='title' asc=(action 'sortTitle') desc=(action 'sortTitleDesc')}}
+	</th>
 	<th width="150">ISBN</th>
-	<th width="150">Jahrgangsstufen</th>
+	<th width="225">Jahrgangsstufen
+		{{sorting-buttons sorting=sorting field='form' asc=(action 'sortForm') desc=(action 'sortFormDesc')}}
+	</th>
 	<th width="125">Aktionen</th>
 </thead>
 <tbody>

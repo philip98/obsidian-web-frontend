@@ -138,3 +138,10 @@ button.form-button {
 		height: $topbar-height;
 	}
 }
+
+.sort-buttons {
+	display: inline;
+	button {
+		margin: 0;
+	}
+}
