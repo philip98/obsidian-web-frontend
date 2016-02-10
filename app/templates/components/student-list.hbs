@@ -1,7 +1,13 @@
 <thead>
 	<th width="75"></th>
-	<th>Name</th>
-	<th width="125">Klasse</th>
+	<th>Name
+		{{sorting-buttons sorting=sorting field='name' asc=(action 'sortName')
+			desc=(action 'sortNameDesc')}}
+	</th>
+	<th width="150">Klasse
+		{{sorting-buttons sorting=sorting field='klass' asc=(action 'sortKlass')
+			desc=(action 'sortKlassDesc')}}
+	</th>
 	<th width="125">Aktionen</th>
 </thead>
 <tbody>

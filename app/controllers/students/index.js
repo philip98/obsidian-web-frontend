@@ -1,9 +1,12 @@
 import Ember from 'ember';
+import OrderSearch from 'obsidian-web/mixins/order-search';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(OrderSearch, {
 	init() {
 		this._super(...arguments);
-		this.query = '';
+		this.searchQuery = '';
+		this.searchField = 'name';
+		this.sorting = 'name';
 		this.editClass = '';
 	},
 	queryParams: ['klass', 'style', 'list'],
@@ -37,23 +40,14 @@ export default Ember.Controller.extend({
 			return item.get('form').indexOf(this.get('displayedForm')) > -1;
 		});
 	}),
-	filteredData: Ember.computed('model.students', 'klass', function() {
+	data: Ember.computed('model.students', 'klass', function() {
 		if (this.get('klass')) {
 			return this.get('model.students').filterBy('klass', this.get('klass'));
 		} else {
 			return this.get('model.students');
 		}
 	}),
-	searchedData: Ember.computed('filteredData', 'query', function() {
-		if (this.get('query')) {
-			return this.get('filteredData').filter((item) => {
-				return item.get('name').toLowerCase().indexOf(this.get('query').toLowerCase()) > -1;
-			});
-		} else {
-			return this.get('filteredData');
-		}
-	}),
-	checkedStudents: Ember.computed.filterBy('searchedData', 'checked', true),
+	checkedStudents: Ember.computed.filterBy('sortedData', 'checked', true),
 	klassesNonDistinct: Ember.computed.mapBy('model.students', 'klass'),
 	klasses: Ember.computed('model.students.@each.klass', function() {
 		return this.get('model.students').sortBy('klass').mapBy('klass').uniq();

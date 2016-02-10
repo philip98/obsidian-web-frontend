@@ -35,18 +35,18 @@
 		{{/unless}}
 	</div>
 	<div class="medium-2 columns">
-		{{input type='text' class='search-field radius' value=query placeholder='Suchen' autofocus=true}}
+		{{input type='text' class='search-field radius' value=searchQuery placeholder='Suchen' autofocus=true}}
 	</div>
 </div>
 
 <div class="row">
 	<div class="medium-12 columns">
 		{{#if isTable}}
-		{{#student-list data=searchedData as |s|}}
+		{{#student-list data=sortedData action=(action 'changeSorting') sorting=sorting as |s|}}
 			{{student-entry student=s action=(action 'reload')}}
 		{{/student-list}}
 		{{else}}
-		{{#student-table students=searchedData books=usedBooks as |l|}}
+		{{#student-table students=sortedData books=usedBooks as |l|}}
 			{{input type='checkbox' class='radius disabled no-margin' checked=l}}
 		{{/student-table}}
 		{{/if}}
