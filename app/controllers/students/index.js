@@ -89,7 +89,10 @@ export default Ember.Controller.extend({
 			this.get('filteredData').forEach((student) => {
 				text += student.get('name') + ':\n';
 				student.get('baseSets').forEach((baseSet) => {
-					text += '\t' + baseSet.get('book.title') + '\n';
+					if (Number(baseSet.get('book.form')) !==
+						(new Date()).getFullYear() + 13 - student.get('graduationYear')) {
+						text += '\t' + baseSet.get('book.title') + '\n';
+					}
 				});
 			});
 			this.get('fileSaver').save(text, 'text/plain', this.get('klass') + '.txt');
