@@ -1,19 +1,13 @@
 import Ember from 'ember';
+import OrderSearch from 'obsidian-web/mixins/order-search';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(OrderSearch, {
 	init() {
 		this._super(...arguments);
-		this.query = '';
+		this.searchQuery = '';
+		this.searchField = 'title';
+		this.sorting = 'title';
 	},
-	searchedData: Ember.computed('model', 'query', function() {
-		if (this.get('query')) {
-			return this.get('model').filter((item) => {
-				return item.get('title').toLowerCase().indexOf(this.get('query').toLowerCase()) > -1;
-			});
-		} else {
-			return this.get('model');
-		}
-	}),
 	actions: {
 		reload() {
 			this.get('model').update();
