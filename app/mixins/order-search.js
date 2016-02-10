@@ -1,14 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-    searchedData: Ember.computed('model', 'searchQuery', function() {
+    searchedData: Ember.computed('data', 'searchQuery', function() {
 		if (this.get('searchQuery')) {
-			return this.get('model').filter((item) => {
+			return this.get('data').filter((item) => {
 				return item.get(this.get('searchField')).toLowerCase()
                     .indexOf(this.get('searchQuery').toLowerCase()) > -1;
 			});
 		} else {
-			return this.get('model');
+			return this.get('data');
 		}
 	}),
     sortedData: Ember.computed('searchedData', 'sorting', function() {

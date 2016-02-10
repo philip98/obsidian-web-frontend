@@ -8,6 +8,7 @@ export default Ember.Controller.extend(OrderSearch, {
 		this.searchField = 'title';
 		this.sorting = 'title';
 	},
+	data: Ember.computed.reads('model'),
 	actions: {
 		reload() {
 			this.get('model').update();
