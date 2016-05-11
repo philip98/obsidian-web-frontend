@@ -50,7 +50,7 @@ module.exports = function(environment) {
       'script-src': "'self'",
       'font-src': "'self'",
       'connect-src': "'self' https://api.github.com " + ENV.data_host,
-      'img-src': "'self'",
+      'img-src': "'self' data:",
       'media-src': "'self'",
       'style-src': "'self' 'unsafe-inline'"
     }
