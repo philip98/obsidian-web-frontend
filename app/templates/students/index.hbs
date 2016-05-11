@@ -11,7 +11,7 @@
 			<i class="fi-page-csv"></i>
 		</button>
 		{{#if klass}}
-		<button class="button tiny default radius" {{action 'exportLendings'}}>
+		<button class="button tiny default radius" {{action 'exportL'}}>
 			<i class="fi-page-export-csv"></i>
 		</button>
 		{{/if}}
@@ -73,3 +73,4 @@
 {{/if}}
 
 {{import-dialog id='importStudents' klass=(unbound klass) action=(action 'saveStudent')}}
+{{export-dialog id='exportLendings' action=(action 'exportLendings')}}

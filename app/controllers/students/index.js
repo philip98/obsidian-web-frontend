@@ -69,6 +69,9 @@ export default Ember.Controller.extend(OrderSearch, {
 		importStudents() {
 			$('#importStudents').foundation('reveal', 'open');
 		},
+		exportL() {
+			$('#exportLendings').foundation('reveal', 'open');
+		},
 		saveStudent(data) {
 			let st = this.store.createRecord('student', {classLetter: ''});
 			for (let key in data) {
@@ -78,18 +81,54 @@ export default Ember.Controller.extend(OrderSearch, {
 				this.get('flashMessages').danger(reason);
 			});
 		},
-		exportLendings() {
-			let text = '';
-			this.get('filteredData').forEach((student) => {
-				text += student.get('name') + ':\n';
-				student.get('baseSets').forEach((baseSet) => {
-					if (Number(baseSet.get('book.form')) !==
-						(new Date()).getFullYear() + 13 - student.get('graduationYear')) {
-						text += '\t' + baseSet.get('book.title') + '\n';
+		exportLendings(eLendings) {
+			Ember.RSVP.all(this.get('sortedData').map((student) => {
+				return student.get('baseSets').then((baseSets) => {
+					return baseSets.map((baseSet) => {
+						return baseSet.get('book').then((book) => {
+							if (!book.get('form').includes(String((new Date()).getFullYear() +
+							13 - student.get('graduationYear')))) {
+								return '\t' + book.get('title') + '\n';
+							} else {
+								return '';
+							}
+						});
+					});
+				}).then((bsLines) => {
+					return Ember.RSVP.all(bsLines).then((lines) => {
+						return lines.join('');
+					});
+				}).then((bsString) => {
+					if (eLendings) {
+						return student.get('lendings').then((lendings) => {
+							return lendings.map((lending) => {
+								return lending.get('book').then((book) => {
+									return '\t(E) ' + book.get('title') + '\n';
+								});
+							});
+						}).then((lLines) => {
+							return Ember.RSVP.all(lLines).then((lines) => {
+								return lines.join('');
+							});
+						}).then((lString) => {
+							lString = bsString + lString;
+							if (lString.length > 0) {
+								lString = student.get('name') + ':\n' + lString;
+							}
+							return lString;
+						});
+					} else {
+						if (bsString.length > 0) {
+							return student.get('name') + ':\n' + bsString;
+						} else {
+							return bsString;
+						}
 					}
 				});
+			})).then((lines) => {
+				let text = lines.join('');
+				this.get('fileSaver').save(text, 'text/plain', this.get('klass') + '.txt');
 			});
-			this.get('fileSaver').save(text, 'text/plain', this.get('klass') + '.txt');
 		}
 	}
 });
