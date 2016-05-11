@@ -12,20 +12,24 @@
 	</tr>
 </thead>
 <tbody>
-	{{#each studentsExtended as |st|}}
-	<tr>
-		<td class="text-center">
-			{{#link-to 'students.lend-base' st.student.id class='button tiny radius no-margin'}}
-				<i class="fi-plus"></i>
-			{{/link-to}}
-			{{#link-to 'students.return-base' st.student.id class='button tiny radius no-margin'}}
-				<i class="fi-minus"></i>
-			{{/link-to}}
-		</td>
-		<td>{{link-to st.student.name 'students.show' st.student.id}}</td>
-		{{#each st.baseSets as |bs|}}
-		<td class="text-center">{{yield bs}}</td>
+	{{#if studentsExtended.isPending}}
+		<tr><td colspan="2"><em>Laden...</em></td></tr>
+	{{else}}
+		{{#each studentsExtended.content as |st|}}
+		<tr>
+			<td class="text-center">
+				{{#link-to 'students.lend-base' st.student.id class='button tiny radius no-margin'}}
+					<i class="fi-plus"></i>
+					{{/link-to}}
+					{{#link-to 'students.return-base' st.student.id class='button tiny radius no-margin'}}
+					<i class="fi-minus"></i>
+				{{/link-to}}
+			</td>
+			<td>{{link-to st.student.name 'students.show' st.student.id}}</td>
+			{{#each st.baseSets as |bs|}}
+				<td class="text-center">{{yield bs}}</td>
+			{{/each}}
+		</tr>
 		{{/each}}
-	</tr>
-	{{/each}}
+	{{/if}}
 </tbody>
