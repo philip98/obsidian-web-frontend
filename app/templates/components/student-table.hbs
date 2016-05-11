@@ -13,7 +13,7 @@
 </thead>
 <tbody>
 	{{#if studentsExtended.isPending}}
-		<tr><td colspan="2"><em>Laden...</em></td></tr>
+		<tr><td colspan="2">{{render 'loading'}}</td></tr>
 	{{else}}
 		{{#each studentsExtended.content as |st|}}
 		<tr>
