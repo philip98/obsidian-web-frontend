@@ -1,6 +1,9 @@
 import Ember from "ember";
 export default Ember.Component.extend({
-	didInsertElement() {
-		this.$().foundation();
+	init() {
+		this._super(...arguments);
+		Ember.run.schedule("afterRender", () => {
+			Ember.$(document).foundation();
+		});
 	}
 });
