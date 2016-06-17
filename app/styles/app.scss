@@ -30,9 +30,6 @@ h1 {
 
 table {
 	width: 100%;
-	> tbody > tr > td.text-center  {
-		width: 1.125rem;
-	}
 }
 
 .button.tiny {
@@ -152,4 +149,8 @@ img.loading-screen {
 	margin-left: auto;
 	margin-right: auto;
 	display:block;
+}
+
+td.buttons {
+	display:inline-block !important;
 }

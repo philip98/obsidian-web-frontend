@@ -1,6 +1,6 @@
 <thead>
 	<tr>
-		<th width="120"></th>
+		<th></th>
 		<th></th>
 		{{#each books as |b|}}
 		<th class="rotate">
@@ -17,17 +17,17 @@
 	{{else}}
 		{{#each studentsExtended.content as |st|}}
 		<tr class={{if st.student.isFree 'free' (if st.student.isPartiallyFree 'partially-free' '')}}>
-			<td class="text-center">
+			<td class="buttons">
 				{{#link-to 'students.lend-base' st.student.id class='button tiny radius no-margin'}}
 					<i class="fi-plus"></i>
-					{{/link-to}}
-					{{#link-to 'students.return-base' st.student.id class='button tiny radius no-margin'}}
+				{{/link-to}}
+				{{#link-to 'students.return-base' st.student.id class='button tiny radius no-margin'}}
 					<i class="fi-minus"></i>
 				{{/link-to}}
 			</td>
 			<td>{{link-to st.student.name 'students.show' st.student.id}}</td>
 			{{#each st.baseSets as |bs|}}
-				<td class="text-center">{{yield bs}}</td>
+				<td>{{yield bs}}</td>
 			{{/each}}
 		</tr>
 		{{/each}}
