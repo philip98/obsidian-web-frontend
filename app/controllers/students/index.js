@@ -18,7 +18,7 @@ export default Ember.Controller.extend(OrderSearch, {
 		return (this.get('klass') === '') || (this.get('style') === 'table');
 	}),
 	form: Ember.computed('klass', function() {
-		return Number(this.get('klass').split(/^(\d+)$/)[1]);
+		return Number(this.get('klass').split(/(\d+)/)[1]);
 	}),
 	displayedForm: Ember.computed('form', 'list', function() {
 		if ((new Date()).getMonth() < 8) {
