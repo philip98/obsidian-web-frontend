@@ -7,6 +7,9 @@
 		{{#link-to 'books.new' class='button tiny success radius'}}
 			<i class="fi-plus"></i>
 		{{/link-to}}
+		<button class="button tiny default radius" {{action 'exportAliases'}}>
+			<i class="fi-page-export-csv"></i>
+		</button>
 	</div>
 	<div class="medium-2 columns">
 		{{input type='text' class='search-field radius' value=searchQuery placeholder='Suchen' autofocus=true}}

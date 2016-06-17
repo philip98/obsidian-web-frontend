@@ -9,9 +9,27 @@ export default Ember.Controller.extend(OrderSearch, {
 		this.sorting = 'title';
 	},
 	data: Ember.computed.reads('model'),
+	fileSaver: Ember.inject.service('file-saver'),
 	actions: {
 		reload() {
 			this.get('model').update();
+		},
+		exportAliases() {
+			Ember.RSVP.all(this.get('model').map((book) => {
+				return book.get('aliases').then((aliases) => {
+					return aliases.map((alias) => {
+						return '\t' + alias.get('name') + '\n';
+					});
+				}).then((lines) => {
+					let line = lines.join('');
+					if (line.length > 0) {
+						line = book.get('title') + ':\n' + line;
+					}
+					return line;
+				});
+			})).then((lines) => {
+				this.get('fileSaver').save(lines.join(''), 'text/plain', 'aliasse.txt');
+			});
 		}
 	}
 });
