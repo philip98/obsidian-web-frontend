@@ -16,7 +16,7 @@
 		<tr><td colspan="2">{{render 'loading'}}</td></tr>
 	{{else}}
 		{{#each studentsExtended.content as |st|}}
-		<tr>
+		<tr class={{if st.student.isFree 'free' (if st.student.isPartiallyFree 'partially-free' '')}}>
 			<td class="text-center">
 				{{#link-to 'students.lend-base' st.student.id class='button tiny radius no-margin'}}
 					<i class="fi-plus"></i>

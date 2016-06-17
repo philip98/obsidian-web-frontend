@@ -34,9 +34,6 @@ export default Person.extend({
 		return this.get('baseSets').every((baseSet) => {
 			return String(baseSet.get('book.form')).indexOf(String((new Date()).getFullYear() + 13 -
 				this.get('graduationYear'))) > -1;
-		}) && this.get('lendings').every((lending) => {
-			return String(lending.get('book.form')).indexOf(String((new Date()).getFullYear() + 13 -
-				this.get('graduationYear'))) > -1;
-		});
+		}) && this.get('lendings.length') === 0;
 	})
 });

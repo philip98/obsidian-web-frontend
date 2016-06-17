@@ -8,7 +8,9 @@ export default Ember.Component.extend({
 	tagName: 'tr',
 	classNameBindings: ['free', 'partiallyFree:partially-free:'],
 	free: Ember.computed.alias('student.isFree'),
-	partiallyFree: Ember.computed.alias('student.isPartiallyFree'),
+	partiallyFree: Ember.computed('student', 'free', function() {
+		return !this.get('free') && this.get('student.isPartiallyFree');
+	}),
 	actions: {
 		destroy() {
 			window.alert("Sicher?");
