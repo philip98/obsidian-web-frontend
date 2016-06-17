@@ -18,12 +18,12 @@ export default Ember.Controller.extend(OrderSearch, {
 			Ember.RSVP.all(this.get('model').map((book) => {
 				return book.get('aliases').then((aliases) => {
 					return aliases.map((alias) => {
-						return '\t' + alias.get('name') + '\n';
+						return '  ' + alias.get('name');
 					});
 				}).then((lines) => {
 					let line = lines.join('');
 					if (line.length > 0) {
-						line = book.get('title') + ':\n' + line;
+						line = book.get('title') + ': ' + line + '\n';
 					}
 					return line;
 				});
