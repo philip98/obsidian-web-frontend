@@ -65,6 +65,7 @@ export default Ember.Controller.extend(OrderSearch, {
 		},
 		reload() {
 			this.get('model.students').update();
+			this.get('model.books').update();
 		},
 		importStudents() {
 			$('#importStudents').foundation('reveal', 'open');
