@@ -38,6 +38,9 @@ export default Ember.Component.extend({
                         return;
                     } else {
                         let a = {};
+                        if (_this.get('klass').length > 0) {
+                            a.klass = _this.get('klass');
+                        }
                         for (let i = 0; i < results.data[0].length; ++i) {
                             a[_this.get('headers').objectAt(i)] = results.data[0][i].trim();
                         }
@@ -46,7 +49,8 @@ export default Ember.Component.extend({
                 }, error(err) {
                     _this.get('flashMessages').danger(err.message);
                 }, complete() {
-                    $(_this.get('id')).foundation('reveal', 'close');
+                    $('#' + _this.get('id')).foundation('reveal', 'close');
+                    _this.sendAction('finished');
                 },
                 skipEmptyLines: true
             });

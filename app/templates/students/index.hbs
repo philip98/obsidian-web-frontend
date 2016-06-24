@@ -75,5 +75,5 @@
 </div>
 {{/if}}
 
-{{import-dialog id='importStudents' klass=(unbound klass) action=(action 'saveStudent')}}
+{{import-dialog id='importStudents' klass=(unbound klass) action=(action 'saveStudent') finished=(action 'finishedImport')}}
 {{export-dialog id='exportLendings' action=(action 'exportLendings')}}

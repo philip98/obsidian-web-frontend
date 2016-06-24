@@ -82,6 +82,10 @@ export default Ember.Controller.extend(OrderSearch, {
 				this.get('flashMessages').danger(reason);
 			});
 		},
+		finishedImport() {
+			this.get('flashMessages').success('Schüler erfolgreich importiert');
+			this.get('model.students').update();
+		},
 		exportLendings(eLendings) {
 			Ember.RSVP.all(this.get('sortedData').map((student) => {
 				return student.get('baseSets').then((baseSets) => {
