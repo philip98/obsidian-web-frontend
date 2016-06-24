@@ -14,9 +14,9 @@ export default Ember.Mixin.create({
     sortedData: Ember.computed('searchedData', 'sorting', function() {
         if (this.get('sorting')[0] === '-') {
             return this.get('searchedData').sortBy(this.get('sorting').slice(1))
-                .reverseObjects();
+                .reverseObjects().slice(0, 99);
         } else {
-            return this.get('searchedData').sortBy(this.get('sorting'));
+            return this.get('searchedData').sortBy(this.get('sorting')).slice(0, 99);
         }
     }),
     actions: {
