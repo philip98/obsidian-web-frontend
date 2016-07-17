@@ -25,5 +25,9 @@ export default Ember.Component.extend({
 		return DS.PromiseObject.create({
 			promise: promise
 		});
-	})
+	}),
+	didInsertElement() {
+		this._super(...arguments);
+		this.$().floatThead({position: 'fixed'});
+	}
 });

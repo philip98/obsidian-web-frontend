@@ -10,6 +10,7 @@
     "ember-resolver": "~0.1.18",
     "file-saver.js": "latest",
     "jquery": "2.1.4",
+    "jquery.floatThead": "floatThead#~1.4.2",
     "loader.js": "ember-cli/loader.js#3.2.1",
     "masonry": "~4.1.0",
     "qunit": "~1.18.0"
