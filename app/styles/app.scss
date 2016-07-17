@@ -154,3 +154,19 @@ img.loading-screen {
 td.buttons {
 	display:inline-block !important;
 }
+
+.grid-item, .grid-sizer {
+	width: 33%;
+	margin: 0px;
+	> .button {
+		width: 100%;
+		height: 100%;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.grid-item--width2 {
+	width: 66%;
+}

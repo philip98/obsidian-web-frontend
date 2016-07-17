@@ -1,23 +1,24 @@
 {{#if auth.isAuthenticated}}
-<div class="row index">
-    <div class="medium-6 columns">
-        {{link-to 'Schüler' 'students.index' class='button large expand radius'}}
-    </div>
-    <div class="medium-6 columns">
-        {{link-to 'Lehrer' 'teachers.index' class='button large expand radius'}}
-    </div>
-</div>
-<div class="row index">
-    <div class="medium-6 columns">
-        {{link-to 'Bücher' 'books.index' class='button large expand radius'}}
-    </div>
-    <div class="medium-6 columns">
-        {{link-to 'Einstellungen' 'settings' class='button large expand radius'}}
-    </div>
-</div>
-<div class="row index">
+<div class="row">
     <div class="medium-8 medium-offset-2 columns">
-        {{link-to 'Hilfe' 'help' class='button large expand radius'}}
+        <div class="grid">
+            <div class="grid-sizer"></div>
+            <div class="grid-item grid-item--width2 grid-item--height2">
+                {{link-to 'Schüler' 'students.index' class='button'}}
+            </div>
+            <div class="grid-item">
+                {{link-to 'Lehrer' 'teachers.index' class='button'}}
+            </div>
+            <div class="grid-item grid-item--height2">
+                {{link-to 'Bücher' 'books.index' class='button'}}
+            </div>
+            <div class="grid-item">
+                {{link-to 'Einstellungen' 'settings' class='button'}}
+            </div>
+            <div class="grid-item">
+                {{link-to 'Hilfe' 'help' class='button'}}
+            </div>
+        </div>
     </div>
 </div>
 {{else}}
