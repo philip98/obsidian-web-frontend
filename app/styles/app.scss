@@ -92,6 +92,14 @@ select.class-list {
 			padding: 5px 10px;
 		}
 	}
+	tr {
+		th:nth-child(1) {
+			min-width: 67px;
+		}
+		th:nth-child(2) {
+			min-width: 150px;
+		}
+	}
 }
 
 .footer {
@@ -149,10 +157,6 @@ img.loading-screen {
 	margin-left: auto;
 	margin-right: auto;
 	display:block;
-}
-
-td.buttons {
-	display:inline-block !important;
 }
 
 .grid-item, .grid-sizer {
