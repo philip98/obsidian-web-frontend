@@ -1,21 +1,22 @@
 {{#if auth.isAuthenticated}}
 <div class="row">
     <div class="medium-8 medium-offset-2 columns">
-        <div class="grid">
-            <div class="grid-sizer"></div>
-            <div class="grid-item grid-item--width2 grid-item--height2">
+        <div class="gr-row">
+            <div class="grid-item grid-item--height2">
                 {{link-to 'Schüler' 'students.index' class='button'}}
             </div>
-            <div class="grid-item">
+            <div class="grid-item grid-item--height2">
                 {{link-to 'Lehrer' 'teachers.index' class='button'}}
             </div>
             <div class="grid-item grid-item--height2">
                 {{link-to 'Bücher' 'books.index' class='button'}}
             </div>
-            <div class="grid-item">
+        </div>
+        <div class="gr-row">
+            <div class="grid-item grid-item--width2">
                 {{link-to 'Einstellungen' 'settings' class='button'}}
             </div>
-            <div class="grid-item">
+            <div class="grid-item grid-item--width2">
                 {{link-to 'Hilfe' 'help' class='button'}}
             </div>
         </div>

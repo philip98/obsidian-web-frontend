@@ -4,6 +4,7 @@ export default Ember.Component.extend({
 		this._super(...arguments);
 		Ember.run.schedule("afterRender", () => {
 			Ember.$(document).foundation();
+			/*
 			let width = $('.grid-sizer').width();
 			$('.grid-item').each(function() {
 				if ($(this).hasClass('grid-item--height2')) {
@@ -11,12 +12,7 @@ export default Ember.Component.extend({
 				} else {
 					$(this).height(width);
 				}
-			});
-			Ember.$('.grid').masonry({
-				itemSelector: '.grid-item',
-				percentPosition: true,
-				columnWidth: '.grid-sizer'
-			});
+			});*/
 			let colors = [
 				'CadetBlue', 'SteelBlue','DodgerBlue',
 				'RoyalBlue', 'MediumBlue',
