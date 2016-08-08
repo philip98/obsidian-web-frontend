@@ -33,8 +33,10 @@ export default Ember.Component.extend({
         submit() {
             let _this = this;
             Papa.parse(this.get('files.firstObject'), {
-                step(results) {
+                step(results, parser) {
                     if (results.data[0].length !== _this.get('headers.length')) {
+                        _this.get('flashMessages').alert('Eine Zeile enthält nicht so viele Felder wie angegeben');
+                        parser.abort();
                         return;
                     } else {
                         let a = {};
@@ -47,10 +49,14 @@ export default Ember.Component.extend({
                         _this.sendAction('action', a);
                     }
                 }, error(err) {
-                    _this.get('flashMessages').danger(err.message);
-                }, complete() {
-                    $('#' + _this.get('id')).foundation('reveal', 'close');
-                    _this.sendAction('finished');
+                    _this.get('flashMessages').alert(err.message);
+                }, complete(results) {
+                    if (!results.meta.aborted) {
+                        $('#' + _this.get('id')).foundation('reveal', 'close');
+                        _this.sendAction('finished');
+                    } else {
+                        _this.get('flashMessages').warning('Der Importiervorgang wurde abgebrochen');
+                    }
                 },
                 skipEmptyLines: true
             });
