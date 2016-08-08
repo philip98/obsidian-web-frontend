@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 					Ember.$('#addAlias').foundation('reveal', 'close');
 					this.get('model.aliases').reload();
 				}).catch((reason) => {
-					this.get('flashMessages').danger(reason);
+					this.get('flashMessages').alert(reason);
 				});
 			}
 		},

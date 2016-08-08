@@ -58,7 +58,7 @@ export default Ember.Controller.extend(OrderSearch, {
 				st.set('klass', this.get('editClass'));
 				st.set('checked', false);
 				st.save().catch((reason) => {
-					this.get('flashMessages').danger(reason);
+					this.get('flashMessages').alert(reason);
 				});
 			});
 			this.get('model.students').update();
@@ -79,7 +79,7 @@ export default Ember.Controller.extend(OrderSearch, {
 				st.set(key, data[key]);
 			}
 			st.save().catch((reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			});
 		},
 		finishedImport() {

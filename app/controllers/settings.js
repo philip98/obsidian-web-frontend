@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
                     this.set('password', '');
                     this.set('confirmPassword', '');
                 }, (reason) => {
-                    this.get('flashMessages').danger(reason);
+                    this.get('flashMessages').alert(reason);
                 });
             }
         }, delete() {
@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
                 this.get('auth').destroySession();
                 this.transitionToRoute('index');
             }, (reason) => {
-                this.get('flashMessages').danger(reason);
+                this.get('flashMessages').alert(reason);
             });
         }
     }

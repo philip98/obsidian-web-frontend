@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 			this.get('auth').invalidate().then(() => {
 				this.transitionToRoute('index');
 			}, (reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			});
 		}
 	}

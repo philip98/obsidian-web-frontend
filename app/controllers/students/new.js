@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
 					this.get('flashMessages').success('Schüler erfolgreich erstellt');
 					return this.transitionToRoute('students.index');
 				}, (reason) => {
-					this.get('flashMessages').danger(reason);
+					this.get('flashMessages').alert(reason);
 				});
 			}
 		}

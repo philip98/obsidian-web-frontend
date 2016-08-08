@@ -9,13 +9,13 @@ export default Ember.Component.extend({
 		destroy() {
 			window.alert('Sicher?');
 			this.get('teacher').destroyRecord().catch((reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			});
 		}, edit() {
 			this.toggleProperty('isEditing');
 		}, saveChanges() {
 			this.get('teacher').save().catch((reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			});
 			this.toggleProperty('isEditing');
 			this.sendAction();

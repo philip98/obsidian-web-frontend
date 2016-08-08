@@ -10,7 +10,7 @@ export default Ember.Component.extend({
 		destroy() {
 			window.alert('Sicher?');
 			this.get('alias').destroyRecord().catch((reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			});
 		},
 		edit() {
@@ -18,7 +18,7 @@ export default Ember.Component.extend({
 		},
 		saveChanges() {
 			this.get('alias').save().catch((reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alias(reason);
 			});
 			this.set('isEditing', false);
 			this.sendAction();

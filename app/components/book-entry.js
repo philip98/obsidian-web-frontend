@@ -13,7 +13,7 @@ export default Ember.Component.extend({
 		destroy() {
 			window.alert('Sicher?');
 			this.get('book').destroyRecord().catch((reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			});
 		},
 		edit() {
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 		},
 		saveChanges() {
 			this.get('book').save().catch((reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			});
 			this.set('isEditing', false);
 			this.sendAction();

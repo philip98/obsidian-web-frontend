@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
 			a.save().then(() => {
 				return this.get('auth').authenticate(this.get('name'), this.get('password'));
 			}, (reason) => {
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			}).then(() => {
 				this.set('password', '');
 				this.set('name', '');
@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
 			}, (reason) => {
 				this.set('password', '');
 				this.set('name', '');
-				this.get('flashMessages').danger(reason);
+				this.get('flashMessages').alert(reason);
 			});
 		}
 	}
