@@ -31,12 +31,31 @@ Ausleihen und Rückgaben verbuchen
 ###Schüler importieren
 Bei Klick auf das grüne Blatt Papier öffnet sich ein Dialog. Mit `Datei auswählen`
 wählt man eine [CSV-Datei](https://de.wikipedia.org/wiki/CSV_(Dateiformat)) aus,
-die die Daten der Schüler enthält. Im Feld darunter (wo `name` steht) gibt man an,
-welche Daten in der Datei enthalten sind (da das meist nur die Namen der Schüler sind,
-kann man `name` einfach stehenlassen). Im Feld darunter gibt man die Klasse ein,
+die die Daten der Schüler enthält. Im Headerfeld (wo `name` steht) gibt man an,
+welche Daten in der Datei enthalten sind. Im Feld darunter gibt man die Klasse ein,
 in die die Schüler zu importieren sind (wenn Informationen zur Klasse bereits in
 CSV-Datei zu finden sind, kann das Feld leer gelassen werden). Bei Klick auf
 `Importieren` werden die Daten importiert.
+
+Will man beispielsweise eine CSV-Datei des Formats
+```
+Veen Jael, 12
+Lechenbauer Fiona, 11
+Wittmann Sophie, 11
+Schmidt Sonja, 10a
+...
+```
+importieren, dann muss man entsprechend `name, klasse` im Headerfeld eintragen
+(weil die Datei die Spalten Name und Klasse in der Reihenfolge, durch Komma getrennt
+enthält). Standardmäßig muss man sowieso nur eine Liste von Namen importieren:
+```
+Veen Jael
+Lechenbauer Fiona
+Wittmann Sophie
+Schmidt Sonja
+```
+Dafür reicht es, `name` im Headerfeld zu belassen.
+
 
 Es ist wichtig zu beachten, dass die Datei keine Leerzeilen enthalten sollten
 (auch wenn die Seite sie i.d.R. ignorieren *sollte*). Außerdem sollten in den
