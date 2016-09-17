@@ -22,10 +22,10 @@ export default Ember.Controller.extend({
 					this.set('title', '');
 					this.set('isbn', '');
 					this.set('form', '');
-					this.get('flashMessage').success('Buch erfolgreich erstellt');
+					this.get('flashMessages').success('Buch erfolgreich erstellt');
 					return this.transitionToRoute('books.index');
 				}, (reason) => {
-					this.get('flashMessage').danger(reason);
+					this.get('flashMessages').danger(reason);
 				});
 			}
 		}
