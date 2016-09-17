@@ -1,5 +1,7 @@
 <thead>
-	<th width="75"></th>
+	<th class="fit-content">
+		{{input type='checkbox' checked=checkAll class='no-margin'}}
+	</th>
 	<th>Name
 		{{sorting-buttons sorting=sorting field='name' asc=(action 'sortName')
 			desc=(action 'sortNameDesc')}}
