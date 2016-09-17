@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
 					this.get('flashMessages').success('Buch erfolgreich erstellt');
 					return this.transitionToRoute('books.index');
 				}, (reason) => {
-					this.get('flashMessages').danger(reason);
+					this.get('flashMessages').alert(reason);
 				});
 			}
 		}
