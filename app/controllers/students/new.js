@@ -4,24 +4,19 @@ export default Ember.Controller.extend({
 	init() {
 		this._super(...arguments);
 		this.name = '';
-		this.gradYear = '';
-		this.classLetter = '';
+		this.klass = '';
 	},
-	gradYearValid: Ember.computed.gte('gradYear', 2000),
-	classLetterValid: Ember.computed.lte('classLetter.length', 1),
-	valid: Ember.computed.and('classLetterValid', 'gradYearValid'),
+	klassValid: Ember.computed.match('klass', /[0-9][0-9]?[a-z]?/i),
 	actions: {
 		create() {
-			if (this.get('gradYearValid') && this.get('classLetterValid') && this.get('name')) {
+			if (this.get('klassValid') && this.get('name')) {
 				let r = this.store.createRecord('student', {
 					name: this.get('name'),
-					graduationYear: Number(this.get('gradYear')),
-					classLetter: this.get('classLetter')
+					klass: this.get('klass')
 				});
 				return r.save().then(() => {
 					this.set('name', '');
-					this.set('gradYear', '');
-					this.set('classLetter', '');
+					this.set('klass', '');
 					this.set('errorMessage', '');
 					this.get('flashMessages').success('Schüler erfolgreich erstellt');
 					return this.transitionToRoute('students.index');

@@ -15,20 +15,14 @@
 					{{input type='text' placeholder='Name' value=name class='radius' autofocus=true}}
 				</div>
 				<div class="row">
-					{{input type='text' placeholder='Abschlussjahr' value=gradYear class=(if gradYearValid 'radius' 'radius error')}}
-					{{#unless gradYearValid}}
-					<small class="error">Ung&uuml;ltiges Abschlussjahr (>1999)</small>
+					{{input type='text' placeholder='Klasse' value=klass class=(if klassValid 'radius' 'radius error')}}
+					{{#unless klassValid}}
+					<small class="error">Ung&uuml;ltige Klasse (1-2 Ziffern + 0-1 Buchstaben)</small>
 					{{/unless}}
 				</div>
 				<div class="row">
-					{{input type='text' placeholder='Klassenbuchstabe' value=classLetter class=(if classLetterValid 'radius' 'radius error')}}
-					{{#unless classLetterValid}}
-					<small class="error">Ung&uuml;ltiger Klassenbuchstabe (1 Zeichen)</small>
-					{{/unless}}
-				</div>
-				<div class="row">
-					{{input type='submit' value='Erstellen' class=(if valid 'button radius' 'button radius disabled')}}
-					{{#unless valid}}
+					{{input type='submit' value='Erstellen' class=(if klassValid 'button radius' 'button radius disabled')}}
+					{{#unless klassValid}}
 					<small class="error">Ung&uuml;ltige Angaben</small>
 					{{/unless}}
 				</div>
