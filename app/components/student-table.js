@@ -21,13 +21,22 @@ export default Ember.Component.extend({
 					})
 				};
 			});
-		}));
+		})).then((results) => {
+			this.$().resize();
+			return results;
+		});
 		return DS.PromiseObject.create({
 			promise: promise
 		});
 	}),
 	didInsertElement() {
 		this._super(...arguments);
-		this.$().floatThead({position: 'fixed'});
+		let container = Ember.$('#table-container');
+		this.$().floatThead({
+			scrollContainer: () => {
+				return container;
+			},
+			position: 'absolute'
+		});
 	}
 });

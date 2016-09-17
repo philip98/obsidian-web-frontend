@@ -49,9 +49,11 @@
 			{{student-entry student=s action=(action 'reload')}}
 		{{/student-list}}
 		{{else}}
-		{{#student-table students=sortedData books=usedBooks as |l|}}
-			{{input type='checkbox' class='radius disabled no-margin' checked=l}}
-		{{/student-table}}
+		<div id="table-container">
+			{{#student-table students=sortedData books=usedBooks as |l|}}
+				{{input type='checkbox' class='radius disabled no-margin' checked=l}}
+			{{/student-table}}
+		</div>
 		{{/if}}
 	</div>
 </div>
