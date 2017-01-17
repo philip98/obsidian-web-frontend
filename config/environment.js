@@ -38,11 +38,11 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-    ENV.data_host = 'https://infinite-fortress-1954.herokuapp.com'
+    ENV.data_host = 'http://lowcost-env.b7jxztvame.eu-central-1.elasticbeanstalk.com/'
   }
 
   if (environment === 'production') {
-    ENV.data_host = 'https://infinite-fortress-1954.herokuapp.com'
+    ENV.data_host = 'http://lowcost-env.b7jxztvame.eu-central-1.elasticbeanstalk.com/'
   }
 
   ENV.contentSecurityPolicy = {
